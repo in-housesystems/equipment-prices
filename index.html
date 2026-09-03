@@ -20,8 +20,6 @@
       --navy: #10141c;
       --navy-2: #171c26;
       --mint: #7fe0b8;
-      --mint-deep: #5ec99a;
-      --rust: #8a3b2a;
       --line: rgba(17, 17, 17, 0.12);
       --max: 1120px;
     }
@@ -55,7 +53,10 @@
       display: flex; align-items: center; justify-content: space-between;
       gap: 16px; min-height: 64px;
     }
-    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 15px; color: var(--bone); }
+    .brand {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+      font-weight: 600; font-size: 15px; color: var(--bone);
+    }
     .mark {
       min-width: 48px; height: 32px; padding: 0 11px; border-radius: 8px;
       background: var(--mint); color: var(--navy);
@@ -68,7 +69,7 @@
       background: var(--navy-2); border: 1px solid rgba(127, 224, 184, 0.28);
       border-radius: 999px; padding: 6px 12px; white-space: nowrap;
     }
-    .hero { padding: 48px 0 28px; }
+    .hero { padding: 36px 0 18px; }
     .kicker {
       font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
       text-transform: uppercase; color: var(--muted); margin: 0 0 10px;
@@ -76,12 +77,12 @@
     h1 {
       font-family: "Instrument Serif", Georgia, serif;
       font-size: clamp(36px, 6vw, 56px); font-weight: 400;
-      letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 16px;
+      letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 12px;
     }
-    .lede { max-width: 42em; color: var(--muted); margin: 0; font-size: 17px; }
+    .lede { max-width: 40em; color: var(--muted); margin: 0; font-size: 17px; }
     .tabs {
       display: flex; gap: 8px; flex-wrap: wrap;
-      margin: 28px 0 8px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
+      margin: 22px 0 8px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
     }
     .tab {
       appearance: none; border: 1px solid var(--line); background: transparent;
@@ -90,63 +91,83 @@
     }
     .tab[aria-selected="true"] { background: var(--navy); color: #fff; border-color: var(--navy); }
     .tab-note { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
-    .chips {
-      display: flex; gap: 8px; flex-wrap: wrap;
-      margin: 0 0 22px;
-    }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 20px; }
     .chip {
       text-decoration: none; font-size: 13px; font-weight: 600;
       border: 1px solid var(--line); background: #fff; color: var(--navy);
       border-radius: 999px; padding: 7px 12px;
     }
     .chip:hover, .chip:focus-visible { border-color: var(--navy); }
-    .item {
+    .item, .kit-strip {
       background: rgba(255,255,255,0.42);
       border: 1px solid var(--line); border-radius: 18px;
       padding: 20px; margin: 0 0 18px;
       scroll-margin-top: 80px;
     }
     .item-head { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; margin-bottom: 8px; }
+    .kit-head {
+      display: flex; flex-wrap: wrap; gap: 10px 16px;
+      align-items: center; justify-content: space-between; margin-bottom: 8px;
+    }
     .cat {
       font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--navy); background: var(--mint); border-radius: 999px; padding: 3px 8px;
     }
     h2 { font-size: 20px; margin: 0; letter-spacing: -0.02em; }
-    .blurb, .sku-note, .source { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
-    .sku-note { font-size: 13px; }
-    .grid {
-      display: grid; gap: 10px;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      margin-top: 12px;
+    .blurb, .sku-note, .compare-note, .note, .hint {
+      color: var(--muted); font-size: 14px; margin: 0 0 8px;
     }
-    .card {
-      background: #fff; border: 1px solid var(--line); border-radius: 14px;
-      padding: 14px 14px 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0;
-    }
-    .card.best { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy); }
-    .card.quote { background: var(--bone-2); }
-    .card.gone { opacity: 0.58; }
-    .seller { font-weight: 700; font-size: 14px; }
-    .kind {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    .sku-note, .compare-note, .hint { font-size: 13px; }
+    .swipe-hint {
+      display: none;
       color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      margin: 8px 0 0;
     }
-    .kind.list { color: #1f6b4a; }
-    .kind.quote { color: #7a4a12; }
-    .price {
+    @media (max-width: 1024px) and (min-width: 641px) {
+      .swipe-hint { display: block; }
+    }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 8px 0; }
+    table.compare {
+      width: 100%; min-width: 920px; border-collapse: collapse; font-size: 13px;
+    }
+    .compare th {
+      text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted); padding: 8px 10px;
+      border-bottom: 1px solid var(--line); white-space: nowrap;
+    }
+    .compare td {
+      padding: 10px; border-bottom: 1px solid var(--line); vertical-align: top;
+    }
+    .compare td.num {
       font-family: "Instrument Serif", Georgia, serif;
-      font-size: 32px; letter-spacing: -0.03em; line-height: 1; margin: 4px 0;
+      font-size: 20px; letter-spacing: -0.02em; white-space: nowrap;
     }
-    .unit { font-size: 13px; color: var(--muted); font-weight: 600; }
+    .compare caption { text-align: left; font-weight: 700; margin: 0 0 8px; caption-side: top; }
+    .compare tr.best { background: rgba(127, 224, 184, 0.28); box-shadow: inset 3px 0 0 var(--navy); }
+    .compare tr.gone { opacity: 0.62; }
+    .compare tr.yours { background: var(--bone-2); }
+    .compare a.src { font-weight: 600; text-decoration: none; }
+    .compare a.src:hover { text-decoration: underline; }
+    .unit { font-size: 12px; color: var(--muted); font-weight: 600; margin-top: 2px; }
+    .short-note {
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+      overflow: hidden; color: var(--muted); font-size: 13px; margin: 0;
+    }
     .badge {
       display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; background: var(--navy); color: var(--mint);
-      border-radius: 999px; padding: 3px 8px; width: fit-content;
+      border-radius: 999px; padding: 3px 8px; width: fit-content; margin: 4px 0 0;
     }
-    .badge-low { background: var(--rust); color: #fff; }
-    .avail { font-size: 12px; font-weight: 600; color: var(--rust); }
-    .note { font-size: 13px; color: var(--muted); margin: 0; }
-    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+    .badge-mute {
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--line); font-weight: 600;
+    }
+    .kind-tag {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--muted);
+    }
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       text-decoration: none; font-weight: 700; font-size: 13px;
@@ -155,46 +176,7 @@
     }
     .btn-fill { background: var(--navy); color: #fff; }
     .btn-mint { background: var(--mint); color: var(--navy); border-color: var(--mint); }
-    .btn-outline { background: transparent; color: var(--navy); }
-    .pack-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 10px; }
-    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 4px 0 8px; }
-    table.compare {
-      width: 100%; min-width: 860px; border-collapse: collapse; font-size: 13px;
-    }
-    .compare th {
-      text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--muted); padding: 8px 10px;
-      border-bottom: 1px solid var(--line); white-space: nowrap;
-    }
-    .compare td {
-      padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top;
-    }
-    .compare td.num {
-      font-family: "Instrument Serif", Georgia, serif;
-      font-size: 18px; letter-spacing: -0.02em; white-space: nowrap;
-    }
-    .compare tr.best { background: rgba(127, 224, 184, 0.22); box-shadow: inset 3px 0 0 var(--navy); }
-    .compare tr.gone { opacity: 0.58; }
-    .compare caption { text-align: left; font-weight: 700; margin: 0 0 8px; caption-side: top; }
-    .landed-note { color: var(--muted); font-size: 12px; margin: 0 0 4px; }
-    .flag {
-      display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
-      text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px;
-      padding: 2px 6px; margin: 0 4px 4px 0; color: var(--muted); white-space: nowrap;
-    }
-    .rfq-box {
-      background: var(--bone-2); border: 1px solid var(--line); border-radius: 14px;
-      padding: 12px 14px; margin: 0 0 8px;
-    }
-    .rfq-box h3 { font-size: 14px; margin: 0 0 6px; }
-    .rfq-box ol { margin: 8px 0; padding-left: 20px; }
-    .rfq-box li { margin: 0 0 6px; font-size: 14px; }
-    .kit-strip {
-      background: rgba(255,255,255,0.42);
-      border: 1px solid var(--line); border-radius: 18px;
-      padding: 18px 20px; margin: 0 0 22px;
-    }
-    .kit-strip h2 { font-size: 18px; margin: 0 0 6px; }
+    .btn-quiet { border-color: var(--line); color: var(--muted); }
     .kit-grid {
       display: grid; gap: 10px;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -203,18 +185,39 @@
     .kit-card {
       background: #fff; border: 1px solid var(--line); border-radius: 14px;
       padding: 14px; display: flex; flex-direction: column; gap: 8px;
+      scroll-margin-top: 80px;
     }
-    .kit-card.win { border-color: var(--mint); box-shadow: 0 0 0 2px var(--mint); }
+    .kit-card.win { border-color: var(--navy); box-shadow: 0 0 0 2px var(--mint); }
     .kit-card h3 { font-size: 16px; margin: 0; letter-spacing: -0.02em; }
     .kit-lines { list-style: none; padding: 0; margin: 0; }
-    .kit-lines li { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+    .kit-lines li { font-size: 13px; color: var(--muted); margin: 0 0 8px; overflow-wrap: anywhere; }
+    .kit-card, .item { min-width: 0; }
     .kit-lines a { font-weight: 600; color: var(--ink); text-decoration: none; }
     .kit-lines a:hover { text-decoration: underline; }
     .kit-total {
       font-family: "Instrument Serif", Georgia, serif;
       font-size: 28px; letter-spacing: -0.03em; line-height: 1; margin: 4px 0 0;
     }
-    .kit-warn { font-size: 12px; color: var(--rust); margin: 0; }
+    .kit-warn { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+    .quote-box {
+      background: #fff; border: 1px solid var(--line); border-radius: 14px;
+      padding: 12px 14px; margin: 10px 0 0;
+    }
+    .quote-box summary {
+      cursor: pointer; font-weight: 700; font-size: 14px;
+    }
+    .quote-form {
+      display: grid; gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      margin-top: 12px;
+    }
+    .quote-form label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 600; }
+    .quote-form input {
+      font: inherit; font-weight: 400; padding: 8px 10px;
+      border: 1px solid var(--line); border-radius: 8px; background: var(--bone);
+    }
+    .quote-form .wide { grid-column: 1 / -1; }
+    .quote-form .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
     footer {
       margin-top: 40px; padding: 28px 0 48px;
       border-top: 1px solid var(--line); color: var(--muted); font-size: 14px;
@@ -227,41 +230,48 @@
     }
     @media (max-width: 640px) {
       .nav-inner { gap: 10px; }
-      .stamp { font-size: 10px; padding: 5px 8px; }
-      .hero { padding-top: 28px; }
-      .price { font-size: 28px; }
+      .brand span:not(.mark) { display: none; }
+      .stamp { font-size: 10px; padding: 5px 8px; white-space: normal; line-height: 1.2; text-align: center; min-width: 0; max-width: 58%; }
+      .hero { padding-top: 24px; }
+      .kit-head { flex-direction: column; align-items: stretch; }
+      .kit-head .btn { width: 100%; }
+      .table-wrap { overflow: visible; }
+      .swipe-hint { display: none; }
+      table.compare { min-width: 0; }
+      table.compare thead { display: none; }
+      table.compare, table.compare tbody, table.compare tr, table.compare td { display: block; width: 100%; }
+      table.compare tr {
+        background: #fff; border: 1px solid var(--line); border-radius: 14px;
+        padding: 12px; margin: 0 0 10px; box-shadow: none;
+      }
+      table.compare tr.best { box-shadow: inset 3px 0 0 var(--navy); }
+      table.compare td {
+        display: grid; grid-template-columns: 9em 1fr; gap: 8px;
+        border: 0; padding: 6px 0;
+      }
+      table.compare td::before {
+        content: attr(data-label);
+        font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+        text-transform: uppercase; color: var(--muted); align-self: start;
+      }
+      table.compare td.num { font-size: 26px; }
+      table.compare td.action { display: block; padding-top: 10px; }
+      table.compare td.action::before { display: none; }
+      table.compare .btn { width: 100%; }
     }
     @media print {
-      body {
-        background: #fff !important;
-        background-image: none !important;
-        color: #000;
-        font-size: 12px;
-      }
+      body { background: #fff !important; background-image: none !important; color: #000; font-size: 12px; }
       header.nav, .tabs, .chips, .tab-note, .hero .lede, .kicker,
-      .pack-actions, .actions, .grid, footer, .sr-only { display: none !important; }
+      .quote-box, footer, .sr-only, [data-act="export-quotes"] { display: none !important; }
       .hero { padding: 0 0 10px; }
       h1 { font-size: 26px; margin: 0 0 8px; }
-      .item { break-inside: avoid; background: #fff; }
+      .item, .kit-strip { break-inside: avoid; background: #fff; }
       .table-wrap { overflow: visible; }
       table.compare { min-width: 0; font-size: 11px; }
       .compare td.num { font-size: 14px; }
       .kit-card.win { box-shadow: none; border: 2px solid #000; }
       .compare tr.best { background: #eee; box-shadow: none; }
       a { text-decoration: none; }
-      body.print-kit .hero,
-      body.print-kit #eq-list,
-      body.print-kit #panel-co { display: none !important; }
-      body.print-kit #panel-eq { display: block !important; }
-      body.print-kit .kit-strip { display: block !important; }
-      body.print-pack .hero,
-      body.print-pack .kit-strip,
-      body.print-pack .item:not(.is-print) { display: none !important; }
-      body.print-pack #panel-eq,
-      body.print-pack #panel-co { display: block !important; }
-      body.print-pack #panel-eq.hidden,
-      body.print-pack #panel-co.hidden { display: none !important; }
-      body.print-pack .item.is-print .grid { display: none !important; }
     }
   </style>
 </head>
@@ -279,13 +289,13 @@
     <section class="hero">
       <p class="kicker">In-House Systems LLC · Path A print cell</p>
       <h1>Equipment Prices</h1>
-      <p class="lede">Compare published prices from different suppliers on the same Path A SKU. Capital equipment and consumables sit in separate tabs. Figures are list, quote, or estimate as labeled — not a catalog IHS sells.</p>
+      <p class="lede">Same SKU, different suppliers. Figures are list, quote, or estimate as labeled. In-House Systems LLC does not sell these SKUs.</p>
     </section>
     <div class="tabs" role="tablist">
       <button type="button" class="tab" id="tab-eq" role="tab" aria-selected="true" aria-controls="panel-eq">Capital equipment</button>
       <button type="button" class="tab" id="tab-co" role="tab" aria-selected="false" aria-controls="panel-co">Consumables</button>
     </div>
-    <p class="tab-note" id="tab-note">Request quote opens a mail draft — this page does not send email.</p>
+    <p class="tab-note" id="tab-note">Draft RFQ opens a mail draft — this page does not send email.</p>
     <nav class="chips" id="chips" aria-label="Jump to category"></nav>
     <p class="sr-only" id="live" aria-live="polite"></p>
     <section id="panel-eq" role="tabpanel">
@@ -300,52 +310,755 @@
       <p><strong>In-House Systems LLC</strong> · <a href="mailto:jpatterson@in-housesystems.com">jpatterson@in-housesystems.com</a> · <a href="tel:+17088006129">708-800-6129</a></p>
     </footer>
   </main>
-  <script id="price-data" type="application/json">{"asOf":"2026-09-02","asOfLabel":"Prices as of September 2, 2026","company":"In-House Systems LLC","contactEmail":"jpatterson@in-housesystems.com","contactPhone":"708-800-6129","disclaimer":"Each figure is labeled list, quote, or estimate. Shipping and tax are not included unless a supplier note says otherwise. In-House Systems LLC does not sell these SKUs. Numbers appear only when a public source was verified on the date stamp. Request quote opens a mail draft to the supplier; this page does not send email.","equipment":[{"id":"vhf-e5","name":"vhf E5","category":"Mill","blurb":"5-axis dry disc mill. No compressed air. 17-tool changer. Path A Stage 2 milling — not part of the print cell, listed because IHS already runs one.","skuNote":"Same machine: dry-only E5. Installation, CAM, and burs vary by dealer.","suppliers":[{"name":"Dentcore","kind":"list","price":28990,"currency":"USD","availability":"sold_out","note":"Published regular price $28,990. Page showed sold out. Eligible vhf mill purchases Jul 1–Sep 30, 2026 may include a free starter tool kit after proof of purchase.","sourceUrl":"https://dentcore.com/products/vhf-e5","sourceLabel":"dentcore.com product page","quoteEmail":"info@dentcore.com"},{"name":"Argen","kind":"quote","price":null,"note":"Authorized vhf reseller. No public list price on the product page. Jack bought an E5 through Argen.","sourceUrl":"https://argen.com/en/us/store/products/32103","sourceLabel":"Argen product page","quoteEmail":"customercare@argen.com"},{"name":"Patterson Dental","kind":"quote","price":null,"note":"Authorized vhf reseller. Request-a-quote only. No public dollar figure.","sourceUrl":"https://www.pattersondental.com/equipment-technology/cad-cam/milling-machines/vhf-e5","sourceLabel":"Patterson E5 page","quoteUrl":"https://www.pattersondental.com/equipment-technology/cad-cam/milling-machines/vhf-e5"},{"name":"Henry Schein","kind":"quote","price":null,"note":"Authorized vhf reseller. Quote desk, no public list price.","sourceUrl":"https://www.vhf.com/en-us/contact/resellers/","sourceLabel":"vhf US resellers list","quoteEmail":"quotedesk@henryschein.com"}]},{"id":"form-4b-basic","name":"Formlabs Form 4B Basic Package","category":"Printer","blurb":"Form 4B printer with tank, mixer, Flex build platform, finish kit, and Open Material Mode. No wash/cure in this SKU.","skuNote":"SKU PKG-F4B-BASIC. US dental fulfillment is often through Henry Schein even when Formlabs still prints a cart price.","suppliers":[{"name":"Formlabs","kind":"list","price":7699,"currency":"USD","availability":"in_stock","note":"Published US cart price on Formlabs. US dental orders may still be completed by a reseller.","sourceUrl":"https://formlabs.com/products/form-4b-basic-package/","sourceLabel":"formlabs.com Form 4B Basic"},{"name":"Dynamism","kind":"list","price":7699,"currency":"USD","availability":"in_stock","note":"Same $7,699 published price. Independent Formlabs seller, not Henry Schein.","sourceUrl":"https://www.dynamism.com/formlabs-form-4b-basic-medical-package.html","sourceLabel":"Dynamism Form 4B Basic"},{"name":"Voxel Dental","kind":"list","price":7699,"currency":"USD","availability":"backorder","note":"Published $7,699. Page said backordered.","sourceUrl":"https://voxeldental.com/products/form-4b-basic-dental-package-1","sourceLabel":"Voxel Dental Form 4B Basic"},{"name":"Henry Schein","kind":"quote","price":null,"note":"Preferred North American dental reseller for Formlabs. Login / request quote. No public dollar figure.","sourceUrl":"https://dental.formlabs.com/blog/henry-schein-collaboration/","sourceLabel":"Formlabs: Henry Schein preferred reseller","quoteEmail":"quotedesk@henryschein.com"}]},{"id":"form-4b-complete","name":"Formlabs Form 4B Complete Package 120V","category":"Printer","blurb":"Form 4B plus Form Wash V2, Form Cure V2, solvent pump, finish kit, tank, mixer, Flex platform, and 3-year dental/medical service plan.","skuNote":"SKU PKG-F4B-COMPLETE-120V. Package contents from Formlabs; other dealers may split the kit.","suppliers":[{"name":"Formlabs","kind":"list","price":12006,"currency":"USD","availability":"in_stock","note":"Published US complete-package price.","sourceUrl":"https://dental.formlabs.com/products/form-4b-complete-package/","sourceLabel":"Formlabs Dental Complete Package"},{"name":"Henry Schein","kind":"quote","price":null,"note":"Preferred US dental reseller. No public complete-package price found.","sourceUrl":"https://dental.formlabs.com/blog/henry-schein-collaboration/","sourceLabel":"Formlabs: Henry Schein preferred reseller","quoteEmail":"quotedesk@henryschein.com"},{"name":"Zahn Dental (Henry Schein)","kind":"quote","price":null,"note":"Lab catalog lists Form Cure V2 as login-for-price. Treat the complete kit as quote-only here.","sourceUrl":"https://www.henryschein.com/us-en/zahn/DigitalDentistry/wash-and-cure-formlabs-form-cure-2nd-generation.aspx","sourceLabel":"Zahn Form Cure V2 (login for price)","quoteEmail":"quotedesk@henryschein.com"}]},{"id":"asiga-max-2","name":"Asiga MAX 2","category":"Printer","blurb":"Open-material DLP printer (385 nm). Path A models, guides, and similar parts. Bundles differ — read the notes.","skuNote":"Same printer family. Included software, flash-cure, trays, and resin credits are not identical across dealers.","suppliers":[{"name":"US Dental Outlet","kind":"list","price":10990,"currency":"USD","availability":"in_stock","note":"Published $10,990. $1,000 resin credit after purchase (dealer selects resin with you).","sourceUrl":"https://usdentaloutlet.com/products/asiga-max-2-3d-printer-new-product","sourceLabel":"US Dental Outlet Asiga MAX 2"},{"name":"Chairside Solutions","kind":"list","price":10990,"currency":"USD","availability":"in_stock","note":"Same $10,990 but bundle includes Composer, Asiga Flash curing unit, toolkit, 1 L material + 1 L tray, 12-month warranty.","sourceUrl":"https://www.chairsidesolutions.com/shop/p/asigamax2","sourceLabel":"Chairside Solutions Asiga MAX 2"},{"name":"Dentcore","kind":"list","price":10990,"currency":"USD","availability":"in_stock","note":"Published $10,990. Printer + Cure bundle is a separate quote promotion (Jul 1–Sep 30, 2026).","sourceUrl":"https://dentcore.com/products/asiga-max-2","sourceLabel":"Dentcore Asiga MAX 2","quoteEmail":"info@dentcore.com"},{"name":"Tatum Surgical","kind":"list","price":9800,"currency":"USD","availability":"sold_out","note":"Sale $9,800 (was $9,990) including Composer, 1 kg material, 1 L tray, Flash chamber, calibration toolkit. Page showed sold out.","sourceUrl":"https://tatumsurgical.com/products/asiga-max-2","sourceLabel":"Tatum Surgical Asiga MAX 2"}]},{"id":"sprintray-pro-2","name":"SprintRay Pro 2 complete system","category":"Printer","blurb":"Chairside/practice printer sold as a complete SprintRay system. Confirm wash, cure, and Arch Kit against the quote.","skuNote":"SprintRay publishes a $20,000 complete-system figure on a cost page, not a store cart. Dealers are quote-only.","suppliers":[{"name":"SprintRay","kind":"list","price":20000,"currency":"USD","availability":"request","note":"Published complete-system price on SprintRay's Pro 2 cost/ROI page. Not a cart checkout. Optional Arch Kit listed separately at $1,599 on the SprintRay store.","sourceUrl":"https://sprintray.com/dental-3d-printer-cost-sprintray-pro-2-price-breakdown-roi/","sourceLabel":"SprintRay Pro 2 cost page","quoteEmail":"sales@sprintray.com"},{"name":"Patterson Dental","kind":"quote","price":null,"note":"Authorized SprintRay dealer. Request-a-quote only.","sourceUrl":"https://www.pattersondental.com/equipment-technology/cad-cam/3d-printers/sprintray-pro-2","sourceLabel":"Patterson Pro 2 page","quoteUrl":"https://www.pattersondental.com/equipment-technology/cad-cam/3d-printers/sprintray-pro-2"},{"name":"Henry Schein","kind":"quote","price":null,"note":"Equipment catalog is request-quote. No public dollar figure.","sourceUrl":"https://henryscheinequipmentcatalog.com/sprintray-pro-2-3d-printer","sourceLabel":"Henry Schein equipment catalog","quoteEmail":"quotedesk@henryschein.com"}]},{"id":"form-wash-v2","name":"Formlabs Form Wash V2","category":"Wash / cure","blurb":"Automated wash station for Formlabs desktop printers. IPA or Formlabs wash solution.","skuNote":"SKU FH-WA-03. Same hardware across sellers. MAP appears to hold at $699.","suppliers":[{"name":"Formlabs","kind":"list","price":699,"currency":"USD","availability":"in_stock","note":"Published US price.","sourceUrl":"https://formlabs.com/products/form-wash/","sourceLabel":"formlabs.com Form Wash V2"},{"name":"GoEngineer","kind":"list","price":699,"currency":"USD","availability":"in_stock","note":"Same $699 from a different seller.","sourceUrl":"https://store.goengineer.com/products/formlabs-form-wash-v2","sourceLabel":"GoEngineer Form Wash V2"},{"name":"Zahn Dental (Henry Schein)","kind":"quote","price":null,"note":"Lab catalog: login for price. No public dollar figure.","sourceUrl":"https://www.henryschein.com/us-en/zahn/DigitalDentistry/wash-and-cure-formlabs-form-cure-2nd-generation.aspx","sourceLabel":"Zahn wash/cure catalog","quoteEmail":"quotedesk@henryschein.com"}]},{"id":"form-cure-v2","name":"Formlabs Form Cure V2 120V","category":"Wash / cure","blurb":"Heat + 405 nm post-cure for Formlabs resins. Matched to Form 4/4B.","skuNote":"SKU FH-CU-120V-02.","suppliers":[{"name":"Formlabs","kind":"list","price":999,"currency":"USD","availability":"in_stock","note":"Published US price.","sourceUrl":"https://formlabs.com/products/form-cure/","sourceLabel":"formlabs.com Form Cure V2"},{"name":"GoEngineer","kind":"list","price":999,"currency":"USD","availability":"in_stock","note":"Same $999 from a different seller.","sourceUrl":"https://store.goengineer.com/products/formlabs-form-cure-v2","sourceLabel":"GoEngineer Form Cure V2"},{"name":"Dynamism","kind":"list","price":999,"currency":"USD","availability":"in_stock","note":"Same $999 from a third seller.","sourceUrl":"https://www.dynamism.com/formlabs-for-cure-gen2.html","sourceLabel":"Dynamism Form Cure V2"}]},{"id":"prowash-s","name":"SprintRay ProWash S","category":"Wash / cure","blurb":"Automated two-stage wash and dry for SprintRay platforms.","skuNote":"US dealers often add a required 1-year protection plan ($447). Compare hardware-only vs hardware+plan.","suppliers":[{"name":"US Dental Outlet","kind":"list","price":3299,"currency":"USD","availability":"in_stock","note":"Hardware $3,299. Required 1-year protection $447 at checkout (total $3,746 before tax/ship).","extra":447,"extraLabel":"required 1-year protection","sourceUrl":"https://usdentaloutlet.com/products/prowash-s","sourceLabel":"US Dental Outlet ProWash S"},{"name":"CAD-Ray","kind":"list","price":3299,"currency":"USD","availability":"in_stock","note":"From $3,299. Protection plan add-on $447 listed as required for wash purchase.","extra":447,"extraLabel":"required 1-year protection","sourceUrl":"https://www.cad-ray.com/product/sprintray-prowash-s/","sourceLabel":"CAD-Ray ProWash S"},{"name":"Patterson Dental","kind":"quote","price":null,"note":"SprintRay dealer. No public ProWash S dollar figure found. Request quote with the Pro 2 cell.","sourceUrl":"https://www.pattersondental.com/equipment-technology/cad-cam/3d-printers/sprintray-pro-2","sourceLabel":"Patterson SprintRay pages","quoteUrl":"https://www.pattersondental.com/equipment-technology/cad-cam/3d-printers/sprintray-pro-2"}]},{"id":"procure-2","name":"SprintRay ProCure 2","category":"Wash / cure","blurb":"High-power post-cure for SprintRay resins. No preheat.","skuNote":"Check whether the dealer forces the $447 protection plan.","suppliers":[{"name":"US Dental Outlet","kind":"list","price":3299,"currency":"USD","availability":"in_stock","note":"Hardware $3,299 plus required 1-year protection $447 (total $3,746 before tax/ship).","extra":447,"extraLabel":"required 1-year protection","sourceUrl":"https://usdentaloutlet.com/products/procure-2","sourceLabel":"US Dental Outlet ProCure 2"},{"name":"Evolve Dentistry","kind":"list","price":3299,"currency":"USD","availability":"in_stock","note":"Published $3,299. Protection plan not listed on the product page.","sourceUrl":"https://evolvedentistry.com/product/sprintray-procure-ii/","sourceLabel":"Evolve Dentistry ProCure II"},{"name":"SprintRay","kind":"quote","price":null,"note":"No public ProCure 2 cart price found on store.sprintray.com. Sales quote.","sourceUrl":"https://store.sprintray.com/collections/pro-2","sourceLabel":"SprintRay store (Pro 2 collection)","quoteEmail":"sales@sprintray.com"}]},{"id":"medit-i700","name":"Medit i700 (wired)","category":"Scanner","blurb":"Wired intraoral scanner. Path A intake, not a mill or printer. Wireless i700 is a different SKU and is not mixed in here.","skuNote":"Scanner only. Bundles with laptop/cart are a different deal — omitted.","suppliers":[{"name":"Dentcore","kind":"list","price":13999,"currency":"USD","availability":"in_stock","note":"Published $13,999 for the i700 intraoral scanner.","sourceUrl":"https://dentcore.com/collections/medit","sourceLabel":"Dentcore Medit collection","quoteEmail":"info@dentcore.com"},{"name":"Henry Schein","kind":"quote","price":null,"note":"Login for current price. Catalog still shows a struck-through prior list around $17,900 on some i700 listings — current street is not public.","sourceUrl":"https://www.henryschein.com/us-en/Dental/supplies/medit.aspx","sourceLabel":"Henry Schein Medit listings","quoteEmail":"quotedesk@henryschein.com"},{"name":"Benco Dental","kind":"quote","price":null,"note":"Log in to view pricing. No public dollar figure.","sourceUrl":"https://shop.benco.com/Product/6038-093/medit-i700-scanner-system","sourceLabel":"Benco i700 product page","quoteUrl":"https://shop.benco.com/Product/6038-093/medit-i700-scanner-system"}]}],"consumables":[{"id":"fast-model-1l","name":"Formlabs Fast Model Resin 1 L (Form 4)","category":"Resin","blurb":"Model / thermoform-model resin for Form 4/4B. MAP is $79 at every public US seller checked.","unit":"1 L cartridge","suppliers":[{"name":"Formlabs Dental","kind":"list","price":79,"sourceUrl":"https://dental.formlabs.com/products/fast-model-resin/","sourceLabel":"Formlabs Dental Fast Model"},{"name":"GoEngineer","kind":"list","price":79,"sourceUrl":"https://store.goengineer.com/products/formlabs-fast-model-resin-v1","sourceLabel":"GoEngineer Fast Model"},{"name":"Vision Miner","kind":"list","price":79,"sourceUrl":"https://visionminer.com/products/fast-model-resin-form-4-1-l","sourceLabel":"Vision Miner Fast Model"},{"name":"Voxel Dental","kind":"list","price":79,"note":"Backordered when checked.","sourceUrl":"https://voxeldental.com/products/fast-model-resin-form-4-1-l-4","sourceLabel":"Voxel Dental Fast Model"}]},{"id":"surgical-guide-1l","name":"Formlabs Surgical Guide Resin 1 L (Form 4)","category":"Resin","blurb":"Autoclavable surgical-guide resin. Voxel is $10 higher than GoEngineer and Source Graphics.","unit":"1 L cartridge","suppliers":[{"name":"GoEngineer","kind":"list","price":249,"sourceUrl":"https://store.goengineer.com/products/formlabs-surgical-guide-resin-v1","sourceLabel":"GoEngineer Surgical Guide Resin"},{"name":"Source Graphics","kind":"list","price":249,"note":"Listed out of stock.","sourceUrl":"https://sourcegraphics.com/product/formlabs-surgical-guide-resin-form-4-1l/","sourceLabel":"Source Graphics Surgical Guide Resin"},{"name":"Voxel Dental","kind":"list","price":259,"sourceUrl":"https://voxeldental.com/products/surgical-guide-resin-1-l","sourceLabel":"Voxel Dental Surgical Guide Resin"}]},{"id":"sprintray-die-model-2","name":"SprintRay Die & Model 2 — 1 kg","category":"Resin","blurb":"Die/model resin for SprintRay printers. Public US sellers hold $149.","unit":"1 kg bottle","suppliers":[{"name":"SprintRay Store","kind":"list","price":149,"note":"Natural 1 kg listed; Tan/Gray also $149.","sourceUrl":"https://store.sprintray.com/products/sprintray-die-and-model-2-natural-1kg","sourceLabel":"SprintRay Store Die & Model 2"},{"name":"US Dental Outlet","kind":"list","price":149,"sourceUrl":"https://usdentaloutlet.com/products/sprintray-die-model-2","sourceLabel":"US Dental Outlet Die & Model 2"},{"name":"Evolve Dentistry","kind":"list","price":149,"sourceUrl":"https://evolvedentistry.com/product/sprintray-die-model-2/","sourceLabel":"Evolve Dentistry Die & Model 2"},{"name":"Voxel Dental","kind":"list","price":149,"sourceUrl":"https://voxeldental.com/collections/sprintray","sourceLabel":"Voxel Dental SprintRay collection"}]},{"id":"biomed-durable-1l","name":"Formlabs BioMed Durable Resin 1 L (Form 4B)","category":"Resin","blurb":"Impact-resistant biocompatible resin (splints / durable appliances). Public US sellers hold $429.","unit":"1 L cartridge","suppliers":[{"name":"GoEngineer","kind":"list","price":429,"sourceUrl":"https://store.goengineer.com/products/formlabs-biomed-durable-resin-v1","sourceLabel":"GoEngineer BioMed Durable"},{"name":"MatterHackers","kind":"list","price":429,"note":"Lists free US shipping on this SKU.","sourceUrl":"https://www.matterhackers.com/store/l/formlabs-biomed-durable-resin-form-4/sk/MZE6EA6K","sourceLabel":"MatterHackers BioMed Durable"},{"name":"Dynamism","kind":"list","price":429,"sourceUrl":"https://www.dynamism.com/formlabs/formlabs-biomed-durable-resin-1.html","sourceLabel":"Dynamism BioMed Durable"}]},{"id":"ipa-99","name":"99% isopropyl alcohol","category":"Wash chemistry","blurb":"Wash-tank IPA. Compare unit price. Lowest public per-gallon found is a 4-gallon Walmart pack.","unit":"compare per US gallon","suppliers":[{"name":"Walmart (Florida Laboratories, 4 gal)","kind":"list","price":79.95,"unitPrice":19.99,"unitPriceLabel":"$19.99 / gal","note":"4×1 gallon pack. Industrial/technical use. Hazmat shipping may apply.","sourceUrl":"https://www.walmart.com/ip/Isopropyl-Alcohol-Pure-99-Pack-of-4-Gallons/297367748","sourceLabel":"Walmart 4-gallon 99% IPA"},{"name":"Amazon (1 gal)","kind":"list","price":30,"unitPrice":30,"unitPriceLabel":"$30.00 / gal","note":"Single 1-gallon bottle. Brand listing 'Isopropyl Alcohol 99% - 1 Gallon'.","sourceUrl":"https://www.amazon.com/dp/B0DFCPF89Q","sourceLabel":"Amazon 1-gallon 99% IPA"},{"name":"Walmart (Quality Chemical, 1 gal)","kind":"list","price":36.97,"unitPrice":36.97,"unitPriceLabel":"$36.97 / gal","note":"99.9% anhydrous, 1 gallon. Non-local ships as 4 quarts.","sourceUrl":"https://www.walmart.com/ip/Isopropyl-Alcohol-Grade-99-Anhydrous-IPA-1-gallon-128-oz/435867950","sourceLabel":"Walmart Quality Chemical 1 gal"},{"name":"Uline (5 gal bottle)","kind":"list","price":175,"unitPrice":35,"unitPriceLabel":"$35.00 / gal","note":"5-gallon bottle, $175 each (drops to $165 / $150 at 2 and 4+). Ground only. USP grade.","sourceUrl":"https://www.uline.com/Product/Detail/S-20735/First-Aid/99-Isopropyl-Alcohol-5-Gallon-Bottle","sourceLabel":"Uline 5-gallon 99% IPA"}]},{"id":"nitrile-1000","name":"Nitrile gloves, 1,000 count","category":"PPE","blurb":"Not identical SKUs — grade and mil differ. Lowest public 1,000-count case is GloveSaver; Amazon Medline exam is more expensive.","unit":"1,000 gloves","suppliers":[{"name":"GloveSaver","kind":"list","price":89.9,"note":"4 mil blue. Title says exam grade; spec line also says industrial, FDA 510(k). 10 boxes of 100.","sourceUrl":"https://glovesaver.com/products/4-mil-nitrile-gloves-exam-grade-1-000-count","sourceLabel":"GloveSaver 4 mil 1,000"},{"name":"Uline","kind":"list","price":100,"note":"Industrial 4 mil powder-free, $10/carton of 100 at 10+ cartons = $100 per 1,000. Not exam-labeled.","sourceUrl":"https://www.uline.com/BL_973/Uline-Industrial-Nitrile-Gloves","sourceLabel":"Uline industrial nitrile (S-14179)"},{"name":"Amazon (Medline VersaShield Storm)","kind":"list","price":196.65,"note":"Exam-labeled black nitrile, Large, case of 1,000.","sourceUrl":"https://www.amazon.com/dp/B0070PJ2EI","sourceLabel":"Amazon Medline VersaShield 1000"}]},{"id":"essix-ace-040-25","name":"Essix ACE 0.040 in — 25 sheets","category":"Trays","blurb":"Thermoform sheets for retainers / bleaching trays. Dental-account sellers. Confirm square vs round and 125 mm size.","unit":"25-pack","suppliers":[{"name":"Five Star Ortho","kind":"list","price":55.5,"note":"Essix ACE .040. Practice/medical account required. 25- and 100-packs offered.","sourceUrl":"https://shop.fivestarortho.com/products/essix-ace-040","sourceLabel":"Five Star Ortho Essix ACE .040"},{"name":"Summit Orthodontic Services","kind":"list","price":64.94,"note":"25 sheets. Options include .040 × 125 mm square and round. Ground only.","sourceUrl":"https://summitorthodontic.com/product/essix-ace-plastic-sheets/","sourceLabel":"Summit Ortho Essix ACE"}]},{"id":"formlabs-wash-solution-5l","name":"Formlabs Resin Washing Solution 5 L","category":"Wash chemistry","blurb":"Alternative to IPA in Form Wash. Only Formlabs published a public US price among sellers checked.","unit":"5 L","suppliers":[{"name":"Formlabs","kind":"list","price":75,"note":"Published next to Form Wash V2. No second public US seller price found — do not treat as competed.","sourceUrl":"https://formlabs.com/products/form-wash/","sourceLabel":"Formlabs Form Wash accessories"}]}]}</script>
+  <script id="price-data" type="application/json">{
+  "asOf": "2026-09-02",
+  "asOfLabel": "Prices as of September 2, 2026",
+  "company": "In-House Systems LLC",
+  "contactEmail": "jpatterson@in-housesystems.com",
+  "contactPhone": "708-800-6129",
+  "disclaimer": "Each figure is labeled list, quote, or estimate. Shipping and tax are not included unless a supplier note says otherwise. In-House Systems LLC does not sell these SKUs. Numbers appear only when a public source was verified on the date stamp. Request quote opens a mail draft to the supplier; this page does not send email.",
+  "equipment": [
+    {
+      "id": "vhf-e5",
+      "name": "vhf E5",
+      "category": "Mill",
+      "blurb": "5-axis dry disc mill. No compressed air. 17-tool changer. Path A Stage 2 milling — not part of the print cell, listed because IHS already runs one.",
+      "skuNote": "Same machine: dry-only E5. Installation, CAM, and burs vary by dealer.",
+      "suppliers": [
+        {
+          "name": "Dentcore",
+          "kind": "list",
+          "price": 28990,
+          "currency": "USD",
+          "availability": "sold_out",
+          "note": "Published regular price $28,990. Page showed sold out. Eligible vhf mill purchases Jul 1–Sep 30, 2026 may include a free starter tool kit after proof of purchase.",
+          "sourceUrl": "https://dentcore.com/products/vhf-e5",
+          "sourceLabel": "dentcore.com product page",
+          "quoteEmail": "info@dentcore.com"
+        },
+        {
+          "name": "Argen",
+          "kind": "quote",
+          "price": null,
+          "note": "Authorized vhf reseller. No public list price on the product page. Jack bought an E5 through Argen.",
+          "sourceUrl": "https://argen.com/en/us/store/products/32103",
+          "sourceLabel": "Argen product page",
+          "quoteEmail": "customercare@argen.com"
+        },
+        {
+          "name": "Patterson Dental",
+          "kind": "quote",
+          "price": null,
+          "note": "Authorized vhf reseller. Request-a-quote only. No public dollar figure.",
+          "sourceUrl": "https://www.pattersondental.com/equipment-technology/cad-cam/milling-machines/vhf-e5",
+          "sourceLabel": "Patterson E5 page",
+          "quoteUrl": "https://www.pattersondental.com/equipment-technology/cad-cam/milling-machines/vhf-e5"
+        },
+        {
+          "name": "Henry Schein",
+          "kind": "quote",
+          "price": null,
+          "note": "Authorized vhf reseller. Quote desk, no public list price.",
+          "sourceUrl": "https://www.vhf.com/en-us/contact/resellers/",
+          "sourceLabel": "vhf US resellers list",
+          "quoteEmail": "quotedesk@henryschein.com"
+        }
+      ]
+    },
+    {
+      "id": "form-4b-basic",
+      "name": "Formlabs Form 4B Basic Package",
+      "category": "Printer",
+      "blurb": "Form 4B printer with tank, mixer, Flex build platform, finish kit, and Open Material Mode. No wash/cure in this SKU.",
+      "skuNote": "SKU PKG-F4B-BASIC. US dental fulfillment is often through Henry Schein even when Formlabs still prints a cart price.",
+      "suppliers": [
+        {
+          "name": "Formlabs",
+          "kind": "list",
+          "price": 7699,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Published US cart price on Formlabs. US dental orders may still be completed by a reseller.",
+          "sourceUrl": "https://formlabs.com/products/form-4b-basic-package/",
+          "sourceLabel": "formlabs.com Form 4B Basic"
+        },
+        {
+          "name": "Dynamism",
+          "kind": "list",
+          "price": 7699,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Same $7,699 published price. Independent Formlabs seller, not Henry Schein.",
+          "sourceUrl": "https://www.dynamism.com/formlabs-form-4b-basic-medical-package.html",
+          "sourceLabel": "Dynamism Form 4B Basic"
+        },
+        {
+          "name": "Voxel Dental",
+          "kind": "list",
+          "price": 7699,
+          "currency": "USD",
+          "availability": "backorder",
+          "note": "Published $7,699. Page said backordered.",
+          "sourceUrl": "https://voxeldental.com/products/form-4b-basic-dental-package-1",
+          "sourceLabel": "Voxel Dental Form 4B Basic"
+        },
+        {
+          "name": "Henry Schein",
+          "kind": "quote",
+          "price": null,
+          "note": "Preferred North American dental reseller for Formlabs. Login / request quote. No public dollar figure.",
+          "sourceUrl": "https://dental.formlabs.com/blog/henry-schein-collaboration/",
+          "sourceLabel": "Formlabs: Henry Schein preferred reseller",
+          "quoteEmail": "quotedesk@henryschein.com"
+        }
+      ]
+    },
+    {
+      "id": "form-4b-complete",
+      "name": "Formlabs Form 4B Complete Package 120V",
+      "category": "Printer",
+      "blurb": "Form 4B plus Form Wash V2, Form Cure V2, solvent pump, finish kit, tank, mixer, Flex platform, and 3-year dental/medical service plan.",
+      "skuNote": "SKU PKG-F4B-COMPLETE-120V. Package contents from Formlabs; other dealers may split the kit.",
+      "suppliers": [
+        {
+          "name": "Formlabs",
+          "kind": "list",
+          "price": 12006,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Published US complete-package price.",
+          "sourceUrl": "https://dental.formlabs.com/products/form-4b-complete-package/",
+          "sourceLabel": "Formlabs Dental Complete Package"
+        },
+        {
+          "name": "Henry Schein",
+          "kind": "quote",
+          "price": null,
+          "note": "Preferred US dental reseller. No public complete-package price found.",
+          "sourceUrl": "https://dental.formlabs.com/blog/henry-schein-collaboration/",
+          "sourceLabel": "Formlabs: Henry Schein preferred reseller",
+          "quoteEmail": "quotedesk@henryschein.com"
+        },
+        {
+          "name": "Zahn Dental (Henry Schein)",
+          "kind": "quote",
+          "price": null,
+          "note": "Lab catalog lists Form Cure V2 as login-for-price. Treat the complete kit as quote-only here.",
+          "sourceUrl": "https://www.henryschein.com/us-en/zahn/DigitalDentistry/wash-and-cure-formlabs-form-cure-2nd-generation.aspx",
+          "sourceLabel": "Zahn Form Cure V2 (login for price)",
+          "quoteEmail": "quotedesk@henryschein.com"
+        }
+      ]
+    },
+    {
+      "id": "asiga-max-2",
+      "name": "Asiga MAX 2",
+      "category": "Printer",
+      "blurb": "Open-material DLP printer (385 nm). Path A models, guides, and similar parts. Bundles differ — read the notes.",
+      "skuNote": "Same printer family. Included software, flash-cure, trays, and resin credits are not identical across dealers.",
+      "suppliers": [
+        {
+          "name": "US Dental Outlet",
+          "kind": "list",
+          "price": 10990,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Published $10,990. $1,000 resin credit after purchase (dealer selects resin with you).",
+          "sourceUrl": "https://usdentaloutlet.com/products/asiga-max-2-3d-printer-new-product",
+          "sourceLabel": "US Dental Outlet Asiga MAX 2"
+        },
+        {
+          "name": "Chairside Solutions",
+          "kind": "list",
+          "price": 10990,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Same $10,990 but bundle includes Composer, Asiga Flash curing unit, toolkit, 1 L material + 1 L tray, 12-month warranty.",
+          "sourceUrl": "https://www.chairsidesolutions.com/shop/p/asigamax2",
+          "sourceLabel": "Chairside Solutions Asiga MAX 2"
+        },
+        {
+          "name": "Dentcore",
+          "kind": "list",
+          "price": 10990,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Published $10,990. Printer + Cure bundle is a separate quote promotion (Jul 1–Sep 30, 2026).",
+          "sourceUrl": "https://dentcore.com/products/asiga-max-2",
+          "sourceLabel": "Dentcore Asiga MAX 2",
+          "quoteEmail": "info@dentcore.com"
+        },
+        {
+          "name": "Tatum Surgical",
+          "kind": "list",
+          "price": 9800,
+          "currency": "USD",
+          "availability": "sold_out",
+          "note": "Sale $9,800 (was $9,990) including Composer, 1 kg material, 1 L tray, Flash chamber, calibration toolkit. Page showed sold out.",
+          "sourceUrl": "https://tatumsurgical.com/products/asiga-max-2",
+          "sourceLabel": "Tatum Surgical Asiga MAX 2"
+        }
+      ]
+    },
+    {
+      "id": "sprintray-pro-2",
+      "name": "SprintRay Pro 2 complete system",
+      "category": "Printer",
+      "blurb": "Chairside/practice printer sold as a complete SprintRay system. Confirm wash, cure, and Arch Kit against the quote.",
+      "skuNote": "SprintRay publishes a $20,000 complete-system figure on a cost page, not a store cart. Dealers are quote-only.",
+      "suppliers": [
+        {
+          "name": "SprintRay",
+          "kind": "list",
+          "price": 20000,
+          "currency": "USD",
+          "availability": "request",
+          "note": "Published complete-system price on SprintRay's Pro 2 cost/ROI page. Not a cart checkout. Optional Arch Kit listed separately at $1,599 on the SprintRay store.",
+          "sourceUrl": "https://sprintray.com/dental-3d-printer-cost-sprintray-pro-2-price-breakdown-roi/",
+          "sourceLabel": "SprintRay Pro 2 cost page",
+          "quoteEmail": "sales@sprintray.com"
+        },
+        {
+          "name": "Patterson Dental",
+          "kind": "quote",
+          "price": null,
+          "note": "Authorized SprintRay dealer. Request-a-quote only.",
+          "sourceUrl": "https://www.pattersondental.com/equipment-technology/cad-cam/3d-printers/sprintray-pro-2",
+          "sourceLabel": "Patterson Pro 2 page",
+          "quoteUrl": "https://www.pattersondental.com/equipment-technology/cad-cam/3d-printers/sprintray-pro-2"
+        },
+        {
+          "name": "Henry Schein",
+          "kind": "quote",
+          "price": null,
+          "note": "Equipment catalog is request-quote. No public dollar figure.",
+          "sourceUrl": "https://henryscheinequipmentcatalog.com/sprintray-pro-2-3d-printer",
+          "sourceLabel": "Henry Schein equipment catalog",
+          "quoteEmail": "quotedesk@henryschein.com"
+        }
+      ]
+    },
+    {
+      "id": "form-wash-v2",
+      "name": "Formlabs Form Wash V2",
+      "category": "Wash / cure",
+      "blurb": "Automated wash station for Formlabs desktop printers. IPA or Formlabs wash solution.",
+      "skuNote": "SKU FH-WA-03. Same hardware across sellers. MAP appears to hold at $699.",
+      "suppliers": [
+        {
+          "name": "Formlabs",
+          "kind": "list",
+          "price": 699,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Published US price.",
+          "sourceUrl": "https://formlabs.com/products/form-wash/",
+          "sourceLabel": "formlabs.com Form Wash V2"
+        },
+        {
+          "name": "GoEngineer",
+          "kind": "list",
+          "price": 699,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Same $699 from a different seller.",
+          "sourceUrl": "https://store.goengineer.com/products/formlabs-form-wash-v2",
+          "sourceLabel": "GoEngineer Form Wash V2"
+        },
+        {
+          "name": "Zahn Dental (Henry Schein)",
+          "kind": "quote",
+          "price": null,
+          "note": "Lab catalog: login for price. No public dollar figure.",
+          "sourceUrl": "https://www.henryschein.com/us-en/zahn/DigitalDentistry/wash-and-cure-formlabs-form-cure-2nd-generation.aspx",
+          "sourceLabel": "Zahn wash/cure catalog",
+          "quoteEmail": "quotedesk@henryschein.com"
+        }
+      ]
+    },
+    {
+      "id": "form-cure-v2",
+      "name": "Formlabs Form Cure V2 120V",
+      "category": "Wash / cure",
+      "blurb": "Heat + 405 nm post-cure for Formlabs resins. Matched to Form 4/4B.",
+      "skuNote": "SKU FH-CU-120V-02.",
+      "suppliers": [
+        {
+          "name": "Formlabs",
+          "kind": "list",
+          "price": 999,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Published US price.",
+          "sourceUrl": "https://formlabs.com/products/form-cure/",
+          "sourceLabel": "formlabs.com Form Cure V2"
+        },
+        {
+          "name": "GoEngineer",
+          "kind": "list",
+          "price": 999,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Same $999 from a different seller.",
+          "sourceUrl": "https://store.goengineer.com/products/formlabs-form-cure-v2",
+          "sourceLabel": "GoEngineer Form Cure V2"
+        },
+        {
+          "name": "Dynamism",
+          "kind": "list",
+          "price": 999,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Same $999 from a third seller.",
+          "sourceUrl": "https://www.dynamism.com/formlabs-for-cure-gen2.html",
+          "sourceLabel": "Dynamism Form Cure V2"
+        }
+      ]
+    },
+    {
+      "id": "prowash-s",
+      "name": "SprintRay ProWash S",
+      "category": "Wash / cure",
+      "blurb": "Automated two-stage wash and dry for SprintRay platforms.",
+      "skuNote": "US dealers often add a required 1-year protection plan ($447). Compare hardware-only vs hardware+plan.",
+      "suppliers": [
+        {
+          "name": "US Dental Outlet",
+          "kind": "list",
+          "price": 3299,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Hardware $3,299. Required 1-year protection $447 at checkout (total $3,746 before tax/ship).",
+          "extra": 447,
+          "extraLabel": "required 1-year protection",
+          "sourceUrl": "https://usdentaloutlet.com/products/prowash-s",
+          "sourceLabel": "US Dental Outlet ProWash S"
+        },
+        {
+          "name": "CAD-Ray",
+          "kind": "list",
+          "price": 3299,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "From $3,299. Protection plan add-on $447 listed as required for wash purchase.",
+          "extra": 447,
+          "extraLabel": "required 1-year protection",
+          "sourceUrl": "https://www.cad-ray.com/product/sprintray-prowash-s/",
+          "sourceLabel": "CAD-Ray ProWash S"
+        },
+        {
+          "name": "Patterson Dental",
+          "kind": "quote",
+          "price": null,
+          "note": "SprintRay dealer. No public ProWash S dollar figure found. Request quote with the Pro 2 cell.",
+          "sourceUrl": "https://www.pattersondental.com/equipment-technology/cad-cam/3d-printers/sprintray-pro-2",
+          "sourceLabel": "Patterson SprintRay pages",
+          "quoteUrl": "https://www.pattersondental.com/equipment-technology/cad-cam/3d-printers/sprintray-pro-2"
+        }
+      ]
+    },
+    {
+      "id": "procure-2",
+      "name": "SprintRay ProCure 2",
+      "category": "Wash / cure",
+      "blurb": "High-power post-cure for SprintRay resins. No preheat.",
+      "skuNote": "Check whether the dealer forces the $447 protection plan.",
+      "suppliers": [
+        {
+          "name": "US Dental Outlet",
+          "kind": "list",
+          "price": 3299,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Hardware $3,299 plus required 1-year protection $447 (total $3,746 before tax/ship).",
+          "extra": 447,
+          "extraLabel": "required 1-year protection",
+          "sourceUrl": "https://usdentaloutlet.com/products/procure-2",
+          "sourceLabel": "US Dental Outlet ProCure 2"
+        },
+        {
+          "name": "Evolve Dentistry",
+          "kind": "list",
+          "price": 3299,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Published $3,299. Protection plan not listed on the product page.",
+          "sourceUrl": "https://evolvedentistry.com/product/sprintray-procure-ii/",
+          "sourceLabel": "Evolve Dentistry ProCure II"
+        },
+        {
+          "name": "SprintRay",
+          "kind": "quote",
+          "price": null,
+          "note": "No public ProCure 2 cart price found on store.sprintray.com. Sales quote.",
+          "sourceUrl": "https://store.sprintray.com/collections/pro-2",
+          "sourceLabel": "SprintRay store (Pro 2 collection)",
+          "quoteEmail": "sales@sprintray.com"
+        }
+      ]
+    },
+    {
+      "id": "medit-i700",
+      "name": "Medit i700 (wired)",
+      "category": "Scanner",
+      "blurb": "Wired intraoral scanner. Path A intake, not a mill or printer. Wireless i700 is a different SKU and is not mixed in here.",
+      "skuNote": "Scanner only. Bundles with laptop/cart are a different deal — omitted.",
+      "suppliers": [
+        {
+          "name": "Dentcore",
+          "kind": "list",
+          "price": 13999,
+          "currency": "USD",
+          "availability": "in_stock",
+          "note": "Published $13,999 for the i700 intraoral scanner.",
+          "sourceUrl": "https://dentcore.com/collections/medit",
+          "sourceLabel": "Dentcore Medit collection",
+          "quoteEmail": "info@dentcore.com"
+        },
+        {
+          "name": "Henry Schein",
+          "kind": "quote",
+          "price": null,
+          "note": "Login for current price. Catalog still shows a struck-through prior list around $17,900 on some i700 listings — current street is not public.",
+          "sourceUrl": "https://www.henryschein.com/us-en/Dental/supplies/medit.aspx",
+          "sourceLabel": "Henry Schein Medit listings",
+          "quoteEmail": "quotedesk@henryschein.com"
+        },
+        {
+          "name": "Benco Dental",
+          "kind": "quote",
+          "price": null,
+          "note": "Log in to view pricing. No public dollar figure.",
+          "sourceUrl": "https://shop.benco.com/Product/6038-093/medit-i700-scanner-system",
+          "sourceLabel": "Benco i700 product page",
+          "quoteUrl": "https://shop.benco.com/Product/6038-093/medit-i700-scanner-system"
+        }
+      ]
+    }
+  ],
+  "consumables": [
+    {
+      "id": "fast-model-1l",
+      "name": "Formlabs Fast Model Resin 1 L (Form 4)",
+      "category": "Resin",
+      "blurb": "Model / thermoform-model resin for Form 4/4B. MAP is $79 at every public US seller checked.",
+      "unit": "1 L cartridge",
+      "suppliers": [
+        {
+          "name": "Formlabs Dental",
+          "kind": "list",
+          "price": 79,
+          "sourceUrl": "https://dental.formlabs.com/products/fast-model-resin/",
+          "sourceLabel": "Formlabs Dental Fast Model"
+        },
+        {
+          "name": "GoEngineer",
+          "kind": "list",
+          "price": 79,
+          "sourceUrl": "https://store.goengineer.com/products/formlabs-fast-model-resin-v1",
+          "sourceLabel": "GoEngineer Fast Model"
+        },
+        {
+          "name": "Vision Miner",
+          "kind": "list",
+          "price": 79,
+          "sourceUrl": "https://visionminer.com/products/fast-model-resin-form-4-1-l",
+          "sourceLabel": "Vision Miner Fast Model"
+        },
+        {
+          "name": "Voxel Dental",
+          "kind": "list",
+          "price": 79,
+          "availability": "backorder",
+          "note": "Backordered when checked.",
+          "sourceUrl": "https://voxeldental.com/products/fast-model-resin-form-4-1-l-4",
+          "sourceLabel": "Voxel Dental Fast Model"
+        }
+      ]
+    },
+    {
+      "id": "surgical-guide-1l",
+      "name": "Formlabs Surgical Guide Resin 1 L (Form 4)",
+      "category": "Resin",
+      "blurb": "Autoclavable surgical-guide resin. Voxel is $10 higher than GoEngineer and Source Graphics.",
+      "unit": "1 L cartridge",
+      "suppliers": [
+        {
+          "name": "GoEngineer",
+          "kind": "list",
+          "price": 249,
+          "sourceUrl": "https://store.goengineer.com/products/formlabs-surgical-guide-resin-v1",
+          "sourceLabel": "GoEngineer Surgical Guide Resin"
+        },
+        {
+          "name": "Source Graphics",
+          "kind": "list",
+          "price": 249,
+          "availability": "sold_out",
+          "note": "Listed out of stock.",
+          "sourceUrl": "https://sourcegraphics.com/product/formlabs-surgical-guide-resin-form-4-1l/",
+          "sourceLabel": "Source Graphics Surgical Guide Resin"
+        },
+        {
+          "name": "Voxel Dental",
+          "kind": "list",
+          "price": 259,
+          "sourceUrl": "https://voxeldental.com/products/surgical-guide-resin-1-l",
+          "sourceLabel": "Voxel Dental Surgical Guide Resin"
+        }
+      ]
+    },
+    {
+      "id": "sprintray-die-model-2",
+      "name": "SprintRay Die & Model 2 — 1 kg",
+      "category": "Resin",
+      "blurb": "Die/model resin for SprintRay printers. Public US sellers hold $149.",
+      "unit": "1 kg bottle",
+      "suppliers": [
+        {
+          "name": "SprintRay Store",
+          "kind": "list",
+          "price": 149,
+          "note": "Natural 1 kg listed; Tan/Gray also $149.",
+          "sourceUrl": "https://store.sprintray.com/products/sprintray-die-and-model-2-natural-1kg",
+          "sourceLabel": "SprintRay Store Die & Model 2"
+        },
+        {
+          "name": "US Dental Outlet",
+          "kind": "list",
+          "price": 149,
+          "sourceUrl": "https://usdentaloutlet.com/products/sprintray-die-model-2",
+          "sourceLabel": "US Dental Outlet Die & Model 2"
+        },
+        {
+          "name": "Evolve Dentistry",
+          "kind": "list",
+          "price": 149,
+          "sourceUrl": "https://evolvedentistry.com/product/sprintray-die-model-2/",
+          "sourceLabel": "Evolve Dentistry Die & Model 2"
+        },
+        {
+          "name": "Voxel Dental",
+          "kind": "list",
+          "price": 149,
+          "sourceUrl": "https://voxeldental.com/collections/sprintray",
+          "sourceLabel": "Voxel Dental SprintRay collection"
+        }
+      ]
+    },
+    {
+      "id": "biomed-durable-1l",
+      "name": "Formlabs BioMed Durable Resin 1 L (Form 4B)",
+      "category": "Resin",
+      "blurb": "Impact-resistant biocompatible resin (splints / durable appliances). Public US sellers hold $429.",
+      "unit": "1 L cartridge",
+      "suppliers": [
+        {
+          "name": "GoEngineer",
+          "kind": "list",
+          "price": 429,
+          "sourceUrl": "https://store.goengineer.com/products/formlabs-biomed-durable-resin-v1",
+          "sourceLabel": "GoEngineer BioMed Durable"
+        },
+        {
+          "name": "MatterHackers",
+          "kind": "list",
+          "price": 429,
+          "note": "Lists free US shipping on this SKU.",
+          "sourceUrl": "https://www.matterhackers.com/store/l/formlabs-biomed-durable-resin-form-4/sk/MZE6EA6K",
+          "sourceLabel": "MatterHackers BioMed Durable"
+        },
+        {
+          "name": "Dynamism",
+          "kind": "list",
+          "price": 429,
+          "sourceUrl": "https://www.dynamism.com/formlabs/formlabs-biomed-durable-resin-1.html",
+          "sourceLabel": "Dynamism BioMed Durable"
+        }
+      ]
+    },
+    {
+      "id": "ipa-99",
+      "name": "99% isopropyl alcohol",
+      "category": "Wash chemistry",
+      "blurb": "Wash-tank IPA. Compare unit price. Lowest public per-gallon found is a 4-gallon Walmart pack.",
+      "unit": "compare per US gallon",
+      "suppliers": [
+        {
+          "name": "Walmart (Florida Laboratories, 4 gal)",
+          "kind": "list",
+          "price": 79.95,
+          "unitPrice": 19.99,
+          "unitPriceLabel": "$19.99 / gal",
+          "note": "4×1 gallon pack. Industrial/technical use. Hazmat shipping may apply.",
+          "sourceUrl": "https://www.walmart.com/ip/Isopropyl-Alcohol-Pure-99-Pack-of-4-Gallons/297367748",
+          "sourceLabel": "Walmart 4-gallon 99% IPA"
+        },
+        {
+          "name": "Amazon (1 gal)",
+          "kind": "list",
+          "price": 30,
+          "unitPrice": 30,
+          "unitPriceLabel": "$30.00 / gal",
+          "note": "Single 1-gallon bottle. Brand listing 'Isopropyl Alcohol 99% - 1 Gallon'.",
+          "sourceUrl": "https://www.amazon.com/dp/B0DFCPF89Q",
+          "sourceLabel": "Amazon 1-gallon 99% IPA"
+        },
+        {
+          "name": "Walmart (Quality Chemical, 1 gal)",
+          "kind": "list",
+          "price": 36.97,
+          "unitPrice": 36.97,
+          "unitPriceLabel": "$36.97 / gal",
+          "note": "99.9% anhydrous, 1 gallon. Non-local ships as 4 quarts.",
+          "sourceUrl": "https://www.walmart.com/ip/Isopropyl-Alcohol-Grade-99-Anhydrous-IPA-1-gallon-128-oz/435867950",
+          "sourceLabel": "Walmart Quality Chemical 1 gal"
+        },
+        {
+          "name": "Uline (5 gal bottle)",
+          "kind": "list",
+          "price": 175,
+          "unitPrice": 35,
+          "unitPriceLabel": "$35.00 / gal",
+          "note": "5-gallon bottle, $175 each (drops to $165 / $150 at 2 and 4+). Ground only. USP grade.",
+          "sourceUrl": "https://www.uline.com/Product/Detail/S-20735/First-Aid/99-Isopropyl-Alcohol-5-Gallon-Bottle",
+          "sourceLabel": "Uline 5-gallon 99% IPA"
+        }
+      ]
+    },
+    {
+      "id": "nitrile-1000",
+      "name": "Nitrile gloves, 1,000 count",
+      "category": "PPE",
+      "blurb": "Not identical SKUs — grade and mil differ. Lowest public 1,000-count case is GloveSaver; Amazon Medline exam is more expensive.",
+      "unit": "1,000 gloves",
+      "suppliers": [
+        {
+          "name": "GloveSaver",
+          "kind": "list",
+          "price": 89.9,
+          "note": "4 mil blue. Title says exam grade; spec line also says industrial, FDA 510(k). 10 boxes of 100.",
+          "sourceUrl": "https://glovesaver.com/products/4-mil-nitrile-gloves-exam-grade-1-000-count",
+          "sourceLabel": "GloveSaver 4 mil 1,000"
+        },
+        {
+          "name": "Uline",
+          "kind": "list",
+          "price": 100,
+          "note": "Industrial 4 mil powder-free, $10/carton of 100 at 10+ cartons = $100 per 1,000. Not exam-labeled.",
+          "sourceUrl": "https://www.uline.com/BL_973/Uline-Industrial-Nitrile-Gloves",
+          "sourceLabel": "Uline industrial nitrile (S-14179)"
+        },
+        {
+          "name": "Amazon (Medline VersaShield Storm)",
+          "kind": "list",
+          "price": 196.65,
+          "note": "Exam-labeled black nitrile, Large, case of 1,000.",
+          "sourceUrl": "https://www.amazon.com/dp/B0070PJ2EI",
+          "sourceLabel": "Amazon Medline VersaShield 1000"
+        }
+      ]
+    },
+    {
+      "id": "essix-ace-040-25",
+      "name": "Essix ACE 0.040 in — 25 sheets",
+      "category": "Trays",
+      "blurb": "Thermoform sheets for retainers / bleaching trays. Dental-account sellers. Confirm square vs round and 125 mm size.",
+      "unit": "25-pack",
+      "suppliers": [
+        {
+          "name": "Five Star Ortho",
+          "kind": "list",
+          "price": 55.5,
+          "note": "Essix ACE .040. Practice/medical account required. 25- and 100-packs offered.",
+          "sourceUrl": "https://shop.fivestarortho.com/products/essix-ace-040",
+          "sourceLabel": "Five Star Ortho Essix ACE .040"
+        },
+        {
+          "name": "Summit Orthodontic Services",
+          "kind": "list",
+          "price": 64.94,
+          "note": "25 sheets. Options include .040 × 125 mm square and round. Ground only.",
+          "sourceUrl": "https://summitorthodontic.com/product/essix-ace-plastic-sheets/",
+          "sourceLabel": "Summit Ortho Essix ACE"
+        }
+      ]
+    },
+    {
+      "id": "formlabs-wash-solution-5l",
+      "name": "Formlabs Resin Washing Solution 5 L",
+      "category": "Wash chemistry",
+      "blurb": "Alternative to IPA in Form Wash. Only Formlabs published a public US price among sellers checked.",
+      "unit": "5 L",
+      "suppliers": [
+        {
+          "name": "Formlabs",
+          "kind": "list",
+          "price": 75,
+          "note": "Published next to Form Wash V2. No second public US seller price found — do not treat as competed.",
+          "sourceUrl": "https://formlabs.com/products/form-wash/",
+          "sourceLabel": "Formlabs Form Wash accessories"
+        }
+      ]
+    }
+  ]
+}</script>
   <script>
     const FROM = "jpatterson@in-housesystems.com";
+    const QUOTE_KEY = "equipment-prices:quotes";
+    const EQ_ORDER = ["Mill", "Printer", "Wash / cure", "Scanner"];
+    const CO_ORDER = ["Resin", "Wash chemistry", "PPE", "Trays"];
+    const KIT_IDS = ["kit-fl-split", "kit-fl-complete", "kit-sr"];
     const data = JSON.parse(document.getElementById("price-data").textContent);
     const live = document.getElementById("live");
     document.getElementById("stamp").textContent = data.asOfLabel;
     document.getElementById("disclaimer").textContent =
       data.disclaimer +
-      " Landed on this page is published price plus required extra only; shipping and tax are unknown." +
+      " Total we can compare is the published price plus that supplier's required extra only. Shipping and tax are unknown." +
       " Contact: " + data.contactEmail + " · " + data.contactPhone + ".";
 
-    const money = (n) => n == null ? null : n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: n % 1 ? 2 : 0 });
-    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c]));
+    const money = (n) => {
+      if (typeof n !== "number") return null;
+      const digits = Number.isInteger(n) ? 0 : 2;
+      return n.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: digits,
+        maximumFractionDigits: 2
+      });
+    };
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;"
+    }[c]));
     const dash = (v) => (v == null || v === "") ? "—" : v;
 
-    function published(s) {
-      return s.kind !== "quote" && typeof s.price === "number";
-    }
-    function landedOf(s) {
+    function compareTotal(s) {
       if (typeof s.price !== "number") return null;
       return s.price + (typeof s.extra === "number" ? s.extra : 0);
     }
-    function noteUnavailable(s) {
+    function inferAvailFromNote(s) {
       const n = (s.note || "").toLowerCase();
-      return /\bsold out\b/.test(n) || /backorder/.test(n) || /out of stock/.test(n);
+      if (/\bsold out\b/.test(n) || /out of stock/.test(n)) return "sold_out";
+      if (/backorder/.test(n)) return "backorder";
+      return null;
     }
-    function availGroup(s) {
-      if (!published(s)) return 2;
-      const a = s.availability;
-      if (a === "sold_out" || a === "backorder" || a === "request") return 1;
-      return 0;
+    function availabilityOf(s) {
+      if (s._private) return null;
+      if (s.availability) return s.availability;
+      const inferred = inferAvailFromNote(s);
+      if (inferred) return inferred;
+      if (s.kind !== "quote" && typeof s.price === "number") return "in_stock";
+      return "request";
     }
-    function isGone(s) {
-      return s.availability === "sold_out" || s.availability === "backorder" || noteUnavailable(s);
+    function isPublished(s) {
+      return !s._private && s.kind !== "quote" && typeof s.price === "number";
     }
     function isBuyable(s) {
-      return published(s) && availGroup(s) === 0 && !noteUnavailable(s);
+      return isPublished(s) && availabilityOf(s) === "in_stock";
     }
-    function rankValue(item, s, isConsumable) {
-      if (isConsumable && item.suppliers.some((x) => x.unitPrice != null) && typeof s.unitPrice === "number") {
-        return s.unitPrice;
-      }
-      return landedOf(s);
-    }
-    function availLabel(s) {
-      switch (s.availability) {
+    function stockLabel(s) {
+      if (s._private) return "—";
+      switch (availabilityOf(s)) {
         case "in_stock": return "In stock";
         case "sold_out": return "Sold out";
         case "backorder": return "Backorder";
@@ -353,82 +1066,130 @@
         default: return "—";
       }
     }
+    function kindLabel(s) {
+      if (s._private) return "Your quote";
+      return s.kind || "list";
+    }
+    function usesUnitPrice(item) {
+      return item.suppliers.some((s) => typeof s.unitPrice === "number");
+    }
+    function rankValue(item, s) {
+      if (usesUnitPrice(item) && typeof s.unitPrice === "number") return s.unitPrice;
+      return compareTotal(s);
+    }
+    function rankGroup(s) {
+      if (s._private) return typeof s.price === "number" ? 0 : 3;
+      if (!isPublished(s)) return 3;
+      const a = availabilityOf(s);
+      if (a === "in_stock") return 0;
+      if (a === "backorder" || a === "request") return 1;
+      if (a === "sold_out") return 2;
+      return 3;
+    }
     function findItem(id) {
       return data.equipment.find((i) => i.id === id) || data.consumables.find((i) => i.id === id);
     }
-    function usesUnitPrice(item) {
-      return item.suppliers.some((s) => s.unitPrice != null);
+    function sortByCategory(list, order) {
+      return list.map((item, i) => ({ item, i })).sort((a, b) => {
+        const ia = order.indexOf(a.item.category);
+        const ib = order.indexOf(b.item.category);
+        const oa = ia < 0 ? 99 : ia;
+        const ob = ib < 0 ? 99 : ib;
+        if (oa !== ob) return oa - ob;
+        return a.i - b.i;
+      }).map((x) => x.item);
+    }
+    function loadQuotes() {
+      try {
+        const raw = localStorage.getItem(QUOTE_KEY);
+        if (!raw) return {};
+        const parsed = JSON.parse(raw);
+        return parsed && typeof parsed === "object" ? parsed : {};
+      } catch (e) {
+        return {};
+      }
+    }
+    function saveQuotes(map) {
+      localStorage.setItem(QUOTE_KEY, JSON.stringify(map));
+    }
+    function privateRows(skuId) {
+      const map = loadQuotes();
+      const list = Array.isArray(map[skuId]) ? map[skuId] : [];
+      return list.map((q) => ({
+        _private: true,
+        _qid: q.id,
+        name: q.supplier,
+        kind: "Your quote",
+        price: q.price,
+        note: q.note || "",
+        date: q.date || ""
+      }));
     }
     function pickBest(item, { allowRequest = false } = {}) {
       const unit = usesUnitPrice(item);
       const cands = [];
       item.suppliers.forEach((s, i) => {
-        if (!published(s)) return;
-        if (s.availability === "sold_out" || s.availability === "backorder" || noteUnavailable(s)) return;
-        if (!allowRequest && s.availability === "request") return;
+        if (!isPublished(s)) return;
+        const a = availabilityOf(s);
+        if (a === "sold_out" || a === "backorder") return;
+        if (a === "request") {
+          if (!allowRequest) return;
+        } else if (a !== "in_stock") {
+          return;
+        }
         cands.push({ s, i });
       });
       cands.sort((a, b) => {
-        const va = unit && a.s.unitPrice != null ? a.s.unitPrice : landedOf(a.s);
-        const vb = unit && b.s.unitPrice != null ? b.s.unitPrice : landedOf(b.s);
+        const va = unit && typeof a.s.unitPrice === "number" ? a.s.unitPrice : compareTotal(a.s);
+        const vb = unit && typeof b.s.unitPrice === "number" ? b.s.unitPrice : compareTotal(b.s);
         if (va !== vb) return va - vb;
         return a.i - b.i;
       });
       return cands[0] ? cands[0].s : null;
     }
-    function sortedSuppliers(item) {
-      return item.suppliers
-        .map((s, i) => ({ s, i }))
-        .sort((a, b) => {
-          const ga = availGroup(a.s), gb = availGroup(b.s);
-          if (ga !== gb) return ga - gb;
-          const la = landedOf(a.s), lb = landedOf(b.s);
-          if (la == null && lb == null) return a.i - b.i;
-          if (la == null) return 1;
-          if (lb == null) return -1;
-          if (la !== lb) return la - lb;
-          return a.i - b.i;
-        });
+    function sortedRows(item, extras) {
+      const rows = item.suppliers.map((s, i) => ({ s, i })).concat(
+        (extras || []).map((s, j) => ({ s, i: 1000 + j }))
+      );
+      rows.sort((a, b) => {
+        const ga = rankGroup(a.s), gb = rankGroup(b.s);
+        if (ga !== gb) return ga - gb;
+        const va = rankValue(item, a.s), vb = rankValue(item, b.s);
+        if (va == null && vb == null) return a.i - b.i;
+        if (va == null) return 1;
+        if (vb == null) return -1;
+        if (va !== vb) return va - vb;
+        return a.i - b.i;
+      });
+      return rows;
     }
-    function gapsFor(item, s) {
-      const flags = [];
-      if (!published(s)) flags.push("No $");
-      if (!s.quoteEmail && !s.quoteUrl) flags.push("No RFQ path");
-      if (!s.availability) flags.push("No availability");
-      if (typeof s.extra === "number") flags.push("Extra fee");
-      if (s.availability === "request") flags.push("Not a cart");
-      const nPub = item.suppliers.filter(published).length;
-      if (nPub < 2 && published(s)) flags.push("Uncompeted");
-      return flags;
-    }
-    function highlights(item) {
-      const buyable = item.suppliers.filter(isBuyable);
-      const buyVals = buyable.map(landedOf);
+    function highlights(item, rows) {
+      const buyable = rows.map((r) => r.s).filter(isBuyable);
+      const buyVals = buyable.map((s) => rankValue(item, s)).filter((n) => n != null);
       const bestBuy = buyVals.length ? Math.min.apply(null, buyVals) : null;
-      const tied = bestBuy != null && buyable.filter((s) => landedOf(s) === bestBuy).length > 1;
-      const gonePub = item.suppliers.filter((s) => published(s) && (s.availability === "sold_out" || s.availability === "backorder"));
-      const goneVals = gonePub.map(landedOf);
-      const lowUnavail = goneVals.length ? Math.min.apply(null, goneVals) : null;
-      const showUnavail = lowUnavail != null && (bestBuy == null || lowUnavail < bestBuy);
-      return { bestBuy, tied, lowUnavail, showUnavail };
+      const tied = bestBuy != null && buyable.filter((s) => rankValue(item, s) === bestBuy).length > 1;
+      return { bestBuy, tied };
     }
-    function rowBadge(s, h) {
-      if (isBuyable(s) && h.bestBuy != null && landedOf(s) === h.bestBuy) {
-        return h.tied ? "Tied MAP" : "Best bid";
+    function rowMark(item, s, h) {
+      if (s._private) return null;
+      if (isBuyable(s) && h.bestBuy != null && rankValue(item, s) === h.bestBuy) {
+        return h.tied ? "Best buyable (same price)" : "Best buyable";
       }
-      if (h.showUnavail && (s.availability === "sold_out" || s.availability === "backorder") && landedOf(s) === h.lowUnavail) {
-        return "Lowest published (unavailable)";
+      if (availabilityOf(s) === "sold_out" && h.bestBuy != null) {
+        const v = rankValue(item, s);
+        if (v != null && v < h.bestBuy) return "cheaper but sold out";
       }
       return null;
     }
     function mailtoFor(item, supplier) {
       if (!supplier.quoteEmail) return null;
-      const shown = supplier.price == null ? "request quote (no public number)" : money(supplier.price) + " (" + supplier.kind + ")";
+      const shown = supplier.price == null ? "request quote (no public number)" : money(supplier.price) + " (" + kindLabel(supplier) + ")";
       const extraLine = typeof supplier.extra === "number"
         ? "Required extra: " + money(supplier.extra) + (supplier.extraLabel ? " (" + supplier.extraLabel + ")" : "")
         : null;
-      const landedLine = landedOf(supplier) != null
-        ? "Landed on page (price + extra only; shipping and tax unknown): " + money(landedOf(supplier))
+      const total = compareTotal(supplier);
+      const totalLine = total != null
+        ? "Total we can compare (published price plus required extra only; shipping and tax unknown): " + money(total)
         : null;
       const body = [
         "From (send as): " + FROM,
@@ -437,7 +1198,7 @@
         "Supplier of interest: " + supplier.name,
         "Price shown: " + shown,
         extraLine,
-        landedLine,
+        totalLine,
         "Date on page: 2 Sep 2026",
         "",
         "Need:",
@@ -454,260 +1215,131 @@
     }
     function rfqHref(item, supplier) {
       const mail = mailtoFor(item, supplier);
-      if (mail) return { href: mail, label: "Draft", external: false };
-      if (supplier.quoteUrl) return { href: supplier.quoteUrl, label: "Form", external: true };
+      if (mail) return { href: mail, label: "Draft RFQ", external: false };
+      if (supplier.quoteUrl) return { href: supplier.quoteUrl, label: "Draft RFQ", external: true };
       return null;
     }
-    function actions(item, supplier, isConsumable) {
-      const bits = [];
+    function actionCell(item, s, isConsumable) {
+      if (s._private) {
+        return `<button type="button" class="btn btn-quiet" data-act="remove-quote" data-id="${esc(item.id)}" data-qid="${esc(s._qid)}">Remove</button>`;
+      }
       if (isConsumable) {
-        if (supplier.sourceUrl && supplier.kind !== "quote") {
-          bits.push(`<a class="btn btn-fill" href="${esc(supplier.sourceUrl)}" target="_blank" rel="noopener">Buy</a>`);
+        if (s.sourceUrl && s.kind !== "quote") {
+          return `<a class="btn btn-fill" href="${esc(s.sourceUrl)}" target="_blank" rel="noopener">Buy</a>`;
         }
-      } else {
-        if (supplier.sourceUrl) {
-          bits.push(`<a class="btn btn-outline" href="${esc(supplier.sourceUrl)}" target="_blank" rel="noopener">Source</a>`);
-        }
-        const rfq = rfqHref(item, supplier);
-        if (rfq) {
-          const cls = supplier.kind === "quote" ? "btn btn-mint" : "btn btn-outline";
-          const extra = rfq.external ? ` target="_blank" rel="noopener"` : "";
-          bits.push(`<a class="${cls}" href="${esc(rfq.href)}"${extra}>Request a quote</a>`);
-        }
+        return "—";
       }
-      return bits.length ? `<div class="actions">${bits.join("")}</div>` : "";
-    }
-    function card(item, supplier, best, isConsumable) {
-      const cmp = rankValue(item, supplier, isConsumable);
-      const isBest = best != null && cmp === best && isBuyable(supplier);
-      const kindLabel = supplier.kind === "quote" ? "quote" : (supplier.kind || "list");
-      let priceHtml;
-      if (supplier.kind === "quote" || supplier.price == null) {
-        priceHtml = `<div class="price">Quote</div>`;
-      } else {
-        priceHtml = `<div class="price">${esc(money(supplier.price))}</div>`;
-        if (supplier.unitPriceLabel) priceHtml += `<div class="unit">${esc(supplier.unitPriceLabel)}</div>`;
-        if (supplier.extra) priceHtml += `<div class="unit">+ ${esc(money(supplier.extra))} ${esc(supplier.extraLabel || "")}</div>`;
+      const rfq = rfqHref(item, s);
+      if (!rfq) {
+        if (s.sourceUrl && isPublished(s)) {
+          return `<a class="btn btn-fill" href="${esc(s.sourceUrl)}" target="_blank" rel="noopener">Buy</a>`;
+        }
+        return "—";
       }
-      const avail = supplier.availability === "sold_out" ? `<div class="avail">Sold out when checked</div>`
-        : supplier.availability === "backorder" ? `<div class="avail">Backordered when checked</div>`
-        : noteUnavailable(supplier) ? `<div class="avail">${/out of stock/i.test(supplier.note || "") ? "Out of stock when checked" : "Backordered when checked"}</div>`
-        : "";
-      const gone = isGone(supplier);
-      return `<article class="card ${isBest ? "best" : ""} ${supplier.kind === "quote" ? "quote" : ""} ${gone ? "gone" : ""}">
-        <div class="seller">${esc(supplier.name)}</div>
-        <div class="kind ${esc(kindLabel)}">${esc(kindLabel)}${isBest ? " · lowest published" : ""}</div>
-        ${priceHtml}
-        ${avail}
-        ${supplier.note ? `<p class="note">${esc(supplier.note)}</p>` : ""}
-        <p class="source">${esc(data.asOfLabel)} · ${esc(supplier.sourceLabel || supplier.name)}</p>
-        ${actions(item, supplier, isConsumable)}
-      </article>`;
+      const extra = rfq.external ? ` target="_blank" rel="noopener"` : "";
+      const cls = s.kind === "quote" ? "btn btn-mint" : "btn btn-fill";
+      return `<a class="${cls}" href="${esc(rfq.href)}"${extra}>${esc(rfq.label)}</a>`;
     }
-    function packRows(item) {
-      const h = highlights(item);
-      return sortedSuppliers(item).map(({ s }) => {
-        const quote = !published(s);
-        const badge = rowBadge(s, h);
-        const rfq = rfqHref(item, s);
-        return {
-          supplier: s.name,
-          kind: s.kind || "",
-          published: quote ? null : s.price,
-          extra: typeof s.extra === "number" ? s.extra : null,
-          extraLabel: s.extraLabel || "",
-          landed: quote ? null : landedOf(s),
-          availability: availLabel(s),
-          gaps: gapsFor(item, s),
-          sourceUrl: s.sourceUrl || "",
-          sourceLabel: s.sourceLabel || "",
-          rfqLabel: rfq ? rfq.label : "",
-          rfqHref: rfq ? rfq.href : "",
-          quoteEmail: s.quoteEmail || "",
-          quoteUrl: s.quoteUrl || "",
-          badge,
-          gone: isGone(s),
-          best: badge === "Best bid" || badge === "Tied MAP",
-          raw: s
-        };
-      });
+    function extraCell(s) {
+      if (typeof s.extra !== "number") return "—";
+      return `${esc(money(s.extra))}${s.extraLabel ? `<div class="unit">${esc(s.extraLabel)}</div>` : ""}`;
     }
-    function flagsHtml(flags) {
-      return flags.length ? flags.map((f) => `<span class="flag">${esc(f)}</span>`).join("") : "—";
+    function publishedCell(s) {
+      if (typeof s.price !== "number") return "—";
+      const label = esc(money(s.price));
+      const unit = s.unitPriceLabel ? `<div class="unit">${esc(s.unitPriceLabel)}</div>` : "";
+      if (s.sourceUrl && !s._private) {
+        return `<a class="src" href="${esc(s.sourceUrl)}" target="_blank" rel="noopener">${label}</a>${unit}`;
+      }
+      return `${label}${unit}`;
     }
-    function compareTable(item) {
-      const rows = packRows(item);
-      const body = rows.map((r) => {
-        const badgeHtml = r.badge
-          ? `<div><span class="badge${r.badge.indexOf("unavailable") >= 0 ? " badge-low" : ""}">${esc(r.badge)}</span></div>`
+    function noteCell(s) {
+      const bits = [];
+      if (s._private && s.date) bits.push(s.date);
+      if (s.note) bits.push(s.note);
+      if (!bits.length) return "—";
+      const text = bits.join(" — ");
+      return `<p class="short-note" title="${esc(text)}">${esc(text)}</p>`;
+    }
+    function compareTable(item, isConsumable) {
+      const extras = isConsumable ? [] : privateRows(item.id);
+      const rows = sortedRows(item, extras);
+      const h = highlights(item, rows);
+      const body = rows.map(({ s }) => {
+        const mark = rowMark(item, s, h);
+        const best = mark && mark.indexOf("Best buyable") === 0;
+        const mute = mark === "cheaper but sold out";
+        const total = compareTotal(s);
+        const cls = [best ? "best" : "", availabilityOf(s) === "sold_out" || availabilityOf(s) === "backorder" ? "gone" : "", s._private ? "yours" : ""].filter(Boolean).join(" ");
+        const badge = mark
+          ? `<div><span class="badge${mute ? " badge-mute" : ""}">${esc(mark)}</span></div>`
           : "";
-        const src = r.sourceUrl
-          ? `<a href="${esc(r.sourceUrl)}" target="_blank" rel="noopener">Source</a>`
-          : "—";
-        let rfq = "—";
-        if (r.rfqHref) {
-          const extra = r.rfqHref.indexOf("mailto:") === 0 ? "" : ` target="_blank" rel="noopener"`;
-          rfq = `<a href="${esc(r.rfqHref)}"${extra}>${esc(r.rfqLabel)}</a>`;
-        }
-        return `<tr class="${r.best ? "best" : ""} ${r.gone ? "gone" : ""}">
-          <td>${esc(r.supplier)}${badgeHtml}</td>
-          <td>${esc(r.kind)}</td>
-          <td class="num">${esc(dash(money(r.published)))}</td>
-          <td>${r.extra != null ? `${esc(money(r.extra))}${r.extraLabel ? `<div class="unit">${esc(r.extraLabel)}</div>` : ""}` : "—"}</td>
-          <td class="num">${esc(dash(money(r.landed)))}</td>
-          <td>${esc(r.availability)}</td>
-          <td>${flagsHtml(r.gaps)}</td>
-          <td>${src}</td>
-          <td>${rfq}</td>
+        return `<tr class="${cls}">
+          <td data-label="Supplier">${esc(s.name)}${badge}</td>
+          <td data-label="Kind"><span class="kind-tag">${esc(kindLabel(s))}</span></td>
+          <td class="num" data-label="Published price">${publishedCell(s)}</td>
+          <td data-label="Extra required">${extraCell(s)}</td>
+          <td class="num" data-label="Total we can compare">${esc(dash(money(total)))}</td>
+          <td data-label="Stock">${esc(stockLabel(s))}</td>
+          <td data-label="Note">${noteCell(s)}</td>
+          <td class="action" data-label="Action">${actionCell(item, s, isConsumable)}</td>
         </tr>`;
       }).join("");
-      return `<div class="table-wrap">
+      return `<p class="swipe-hint">Swipe to compare</p>
+      <div class="table-wrap">
         <table class="compare">
-          <caption>${esc(item.name)} — ranked compare (as of ${esc(data.asOf)})</caption>
+          <caption>${esc(item.name)} — as of ${esc(data.asOf)}</caption>
           <thead>
             <tr>
               <th scope="col">Supplier</th>
               <th scope="col">Kind</th>
-              <th scope="col">Published $</th>
-              <th scope="col">Extra</th>
-              <th scope="col">Landed $</th>
-              <th scope="col">Availability</th>
-              <th scope="col">Gaps</th>
-              <th scope="col">Source</th>
-              <th scope="col">RFQ</th>
+              <th scope="col">Published price</th>
+              <th scope="col">Extra required</th>
+              <th scope="col">Total we can compare</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Note</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>${body}</tbody>
         </table>
       </div>
-      <p class="landed-note">Landed is published price plus required extra only. Shipping and tax are unknown — not a delivered total.</p>`;
+      <p class="compare-note">Total we can compare is the published price plus that supplier's required extra only. Shipping and tax are unknown.</p>`;
     }
-    function rfqTargets(item) {
-      return item.suppliers.filter((s) => s.quoteEmail || s.quoteUrl);
-    }
-    function rfqChecklistText(item) {
-      const rows = rfqTargets(item);
-      const lines = [
-        "RFQ drafts — " + item.name + " — as of " + data.asOf,
-        "This page does not send email. Jack sends the message. From: " + FROM,
-        ""
-      ];
-      if (!rows.length) {
-        lines.push("No quoteEmail or quoteUrl on these suppliers.");
-        return lines.join("\r\n");
-      }
-      rows.forEach((s, i) => {
-        if (s.quoteEmail) lines.push((i + 1) + ". " + s.name + " — mailto:" + s.quoteEmail);
-        else lines.push((i + 1) + ". " + s.name + " — quote page: " + s.quoteUrl);
-      });
-      return lines.join("\r\n");
-    }
-    function rfqBox(item) {
-      const rows = rfqTargets(item);
-      const items = rows.length
-        ? `<ol>${rows.map((s) => {
-            if (s.quoteEmail) {
-              const href = mailtoFor(item, s);
-              return `<li><a href="${esc(href)}">${esc(s.name)} — open mail draft</a> (${esc(s.quoteEmail)})</li>`;
-            }
-            return `<li><a href="${esc(s.quoteUrl)}" target="_blank" rel="noopener">${esc(s.name)} — quote page</a></li>`;
-          }).join("")}</ol>`
-        : `<p class="note">No quoteEmail or quoteUrl on these suppliers.</p>`;
-      return `<div class="rfq-box hidden" id="rfq-${esc(item.id)}" hidden>
-        <h3>Draft RFQs</h3>
-        <p class="note">One draft per supplier. This page does not send email. Jack sends the message. From: ${esc(FROM)}.</p>
-        ${items}
-        <div class="pack-actions">
-          <button type="button" class="btn btn-outline" data-act="copy-rfq" data-id="${esc(item.id)}">Copy checklist</button>
-        </div>
-      </div>`;
-    }
-    function packToolbar(item) {
-      return `<div class="pack-actions">
-        <button type="button" class="btn btn-outline" data-act="copy" data-id="${esc(item.id)}">Copy table</button>
-        <button type="button" class="btn btn-outline" data-act="csv" data-id="${esc(item.id)}">CSV</button>
-        <button type="button" class="btn btn-outline" data-act="rfq" data-id="${esc(item.id)}">Draft RFQs</button>
-        <button type="button" class="btn btn-outline" data-act="print" data-id="${esc(item.id)}">Print pack</button>
-      </div>`;
-    }
-    function tableText(item) {
-      const rows = packRows(item);
-      const header = ["Supplier", "Kind", "Published $", "Extra", "Landed $", "Availability", "Gaps", "Source", "RFQ"];
-      const lines = [
-        item.name + " — as of " + data.asOf,
-        "Landed is published price plus required extra only. Shipping and tax unknown.",
-        header.join("\t")
-      ];
-      rows.forEach((r) => {
-        lines.push([
-          r.supplier,
-          r.kind,
-          r.published == null ? "—" : money(r.published),
-          r.extra == null ? "—" : money(r.extra),
-          r.landed == null ? "—" : money(r.landed),
-          r.availability,
-          r.gaps.join("; ") || "—",
-          r.sourceUrl || "—",
-          r.quoteEmail ? r.quoteEmail : (r.quoteUrl || "—")
-        ].join("\t"));
-      });
-      return lines.join("\r\n");
-    }
-    function csvEscape(v) {
-      const s = String(v ?? "");
-      if (/[",\r\n]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
-      return s;
-    }
-    function tableCsv(item) {
-      const rows = packRows(item);
-      const header = ["Supplier", "Kind", "Published $", "Extra", "Landed $", "Availability", "Gaps", "Source", "RFQ"];
-      const out = [header.map(csvEscape).join(",")];
-      rows.forEach((r) => {
-        out.push([
-          r.supplier,
-          r.kind,
-          r.published == null ? "—" : money(r.published),
-          r.extra == null ? "—" : money(r.extra),
-          r.landed == null ? "—" : money(r.landed),
-          r.availability,
-          r.gaps.join("; ") || "—",
-          r.sourceUrl || "—",
-          r.quoteEmail ? r.quoteEmail : (r.quoteUrl || "—")
-        ].map(csvEscape).join(","));
-      });
-      return "\uFEFF" + out.join("\r\n");
+    function quoteBox(item) {
+      const today = new Date().toISOString().slice(0, 10);
+      return `<details class="quote-box">
+        <summary>Add your quote</summary>
+        <form class="quote-form" data-quote-form="${esc(item.id)}">
+          <label>Supplier <input name="supplier" required autocomplete="off" /></label>
+          <label>Dollars <input name="price" type="number" min="0.01" step="0.01" required /></label>
+          <label>Date <input name="date" type="date" required value="${esc(today)}" /></label>
+          <label class="wide">Note (optional) <input name="note" autocomplete="off" /></label>
+          <div class="wide actions">
+            <button type="submit" class="btn btn-fill">Save on this computer</button>
+            <p class="hint">This computer only. Kind is Your quote. It never wins Best buyable. The app never sends, uploads, or commits.</p>
+          </div>
+        </form>
+      </details>`;
     }
     function renderItem(item, isConsumable) {
-      const keyBest = (() => {
-        const vals = item.suppliers.filter(isBuyable).map((s) => rankValue(item, s, isConsumable)).filter((n) => n != null);
-        return vals.length ? Math.min.apply(null, vals) : null;
-      })();
-      const bestMoney = keyBest == null ? "" : (isConsumable && usesUnitPrice(item)
-        ? (item.suppliers.find((s) => s.unitPrice === keyBest && isBuyable(s)) || {}).unitPriceLabel || money(keyBest)
-        : money(keyBest));
-      const bestLine = keyBest == null
-        ? `<p class="sku-note">No public buy-it-now number among these suppliers — quote only.</p>`
-        : `<p class="sku-note">${isConsumable ? "Best public price: " : "Lowest buyable published: "}<strong>${esc(bestMoney)}</strong>${item.unit ? " · " + esc(item.unit) : ""}</p>`;
-      const capitalBits = isConsumable ? "" : `${packToolbar(item)}${compareTable(item)}${rfqBox(item)}`;
+      const unit = item.unit ? ` · ${esc(item.unit)}` : "";
       return `<article class="item" id="${esc(item.id)}">
         <div class="item-head"><span class="cat">${esc(item.category)}</span><h2>${esc(item.name)}</h2></div>
         <p class="blurb">${esc(item.blurb)}</p>
-        ${item.skuNote ? `<p class="sku-note">${esc(item.skuNote)}</p>` : ""}
-        ${bestLine}
-        ${capitalBits}
-        <div class="grid">${item.suppliers.map((s) => card(item, s, keyBest, isConsumable)).join("")}</div>
+        ${item.skuNote ? `<p class="sku-note">${esc(item.skuNote)}${unit}</p>` : (item.unit ? `<p class="sku-note">${unit.slice(3)}</p>` : "")}
+        ${compareTable(item, isConsumable)}
+        ${isConsumable ? "" : quoteBox(item)}
       </article>`;
     }
-
     function kitLine(id, role, { allowRequest = false } = {}) {
       const item = findItem(id);
       const pick = item ? pickBest(item, { allowRequest }) : null;
-      const buyable = !!(pick && isBuyable(pick));
       return {
         id, role, item, pick,
-        landed: pick ? landedOf(pick) : null,
-        buyable,
-        request: !!(pick && pick.availability === "request")
+        total: pick ? compareTotal(pick) : null,
+        buyable: !!(pick && isBuyable(pick)),
+        request: !!(pick && availabilityOf(pick) === "request")
       };
     }
     function lineHtml(line) {
@@ -715,53 +1347,21 @@
       if (!line.pick) {
         return `<li><a href="#${esc(line.id)}">${esc(line.item.name)}</a> — no public buyable price</li>`;
       }
-      let amt = money(line.landed);
+      let amt = money(line.total);
       if (typeof line.pick.extra === "number") {
-        amt = money(line.pick.price) + " + " + money(line.pick.extra) + " " + (line.pick.extraLabel || "extra") + " = " + money(line.landed);
+        amt = money(line.pick.price) + " + " + money(line.pick.extra) + " " + (line.pick.extraLabel || "extra") + " = " + money(line.total);
       }
       const unit = line.pick.unitPriceLabel ? " (" + line.pick.unitPriceLabel + ")" : "";
-      const avail = line.pick.availability === "request" ? " · not a cart" : "";
+      const avail = availabilityOf(line.pick) === "request" ? " · request, not buyable" : "";
       return `<li><a href="#${esc(line.id)}">${esc(line.item.name)}</a> — ${esc(line.pick.name)} ${esc(amt)}${esc(unit)}${avail}</li>`;
     }
-    function sumLanded(lines) {
+    function sumTotals(lines) {
       let total = 0;
       for (let i = 0; i < lines.length; i++) {
-        if (lines[i].landed == null) return null;
-        total += lines[i].landed;
+        if (lines[i].total == null) return null;
+        total += lines[i].total;
       }
       return total;
-    }
-    function kitBuyable(lines) {
-      return lines.every((l) => l.buyable);
-    }
-    function kitPlain(kit) {
-      const lines = [kit.title + " — " + (kit.total == null ? "incomplete" : money(kit.total)) + (kit.buyable ? " (buyable)" : " (not a cart total)")];
-      kit.lines.forEach((l) => {
-        if (!l.pick) lines.push("- " + (l.item ? l.item.name : l.id) + " — no public buyable price");
-        else {
-          let amt = money(l.landed);
-          if (typeof l.pick.extra === "number") {
-            amt = money(l.pick.price) + " + " + money(l.pick.extra) + (l.pick.extraLabel ? " " + l.pick.extraLabel : "") + " = " + money(l.landed);
-          }
-          const unit = l.pick.unitPriceLabel ? " (" + l.pick.unitPriceLabel + ")" : "";
-          lines.push("- " + l.item.name + " — " + l.pick.name + " " + amt + unit);
-        }
-      });
-      if (kit.optional && kit.optional.length) {
-        lines.push(kit.optionalNote || "Optional add-ons (not in total):");
-        kit.optional.forEach((l) => {
-          if (!l.pick) lines.push("- " + (l.item ? l.item.name : l.id) + " — no public buyable price");
-          else {
-            let amt = money(l.landed);
-            if (typeof l.pick.extra === "number") {
-              amt = money(l.pick.price) + " + " + money(l.pick.extra) + (l.pick.extraLabel ? " " + l.pick.extraLabel : "") + " = " + money(l.landed);
-            }
-            lines.push("- " + l.item.name + " — " + l.pick.name + " " + amt);
-          }
-        });
-      }
-      if (kit.note) lines.push(kit.note);
-      return lines.join("\r\n");
     }
     function buildKits() {
       const ipa = kitLine("ipa-99", "IPA");
@@ -781,8 +1381,7 @@
       ].concat(flResins);
       const srLines = [
         kitLine("sprintray-pro-2", "hardware", { allowRequest: true }),
-        kitLine("sprintray-die-model-2", "resin"),
-        ipa
+        kitLine("sprintray-die-model-2", "resin")
       ];
       const srOptional = [
         kitLine("prowash-s", "optional"),
@@ -804,15 +1403,15 @@
         {
           id: "kit-sr",
           title: "SprintRay complete-system",
-          note: "SprintRay’s published figure is a complete-system price on a cost page, not a cart. Treat it as the cell. Die & Model 2 and IPA are added. Shipping and tax unknown.",
-          optionalNote: "Optional add-ons — not in the kit total. Adding ProWash S or ProCure 2 may double-count wash/cure already in the complete-system figure (" + (money(srLines[0].landed) || "published") + "). No invented split of that number.",
+          note: "SprintRay’s published $20,000 figure is a complete-system price on a cost page, not a cart. Treat it as the cell. Die & Model 2 is added. ProWash S and ProCure 2 are optional add-ons and are not in this total. Shipping and tax unknown.",
+          optionalNote: "Optional add-ons — not in the kit total. The $20,000 page is a complete-system figure, so adding ProWash S or ProCure 2 here would double-count wash/cure. Extra fees stay with that supplier only.",
           lines: srLines,
           optional: srOptional
         }
       ];
       kits.forEach((k) => {
-        k.total = sumLanded(k.lines);
-        k.buyable = kitBuyable(k.lines);
+        k.total = sumTotals(k.lines);
+        k.buyable = k.lines.every((l) => l.buyable);
       });
       const buyableTotals = kits.filter((k) => k.buyable && k.total != null).map((k) => k.total);
       const low = buyableTotals.length ? Math.min.apply(null, buyableTotals) : null;
@@ -822,7 +1421,9 @@
     const kits = buildKits();
     function renderKits() {
       const cards = kits.map((k) => {
-        const win = k.win ? `<span class="badge">Lowest buyable</span>` : (k.buyable ? "" : `<span class="badge badge-low">Not a cart</span>`);
+        const win = k.win
+          ? `<span class="badge">Lowest buyable kit</span>`
+          : (k.buyable ? "" : `<span class="badge badge-mute">Not buyable — request</span>`);
         const opt = k.optional && k.optional.length
           ? `<p class="kit-warn">${esc(k.optionalNote)}</p><ul class="kit-lines">${k.optional.map(lineHtml).join("")}</ul>`
           : "";
@@ -835,34 +1436,12 @@
           ${opt}
         </article>`;
       }).join("");
-      return `<div class="item-head"><h2>Print-cell kits</h2></div>
-        <p class="note">Best public buyable lines from SKUs already on this page. Landed is price + required extra only — shipping and tax unknown. SprintRay uses the published complete-system figure as the cell; wash/cure are optional add-ons so they are not stacked on top of that figure.</p>
-        <div class="pack-actions">
-          <button type="button" class="btn btn-outline" data-act="copy-kit">Copy kit</button>
-          <button type="button" class="btn btn-outline" data-act="print-kit">Print kit</button>
+      return `<div class="kit-head">
+          <h2>Print-cell kits</h2>
+          <button type="button" class="btn" data-act="export-quotes">Export quotes JSON</button>
         </div>
+        <p class="note">Best public buyable lines from SKUs already on this page. Totals are published price plus that supplier's required extra only — shipping and tax unknown. SprintRay uses the published complete-system figure as the cell; wash/cure sit outside the membership so they are not stacked on the $20,000 figure.</p>
         <div class="kit-grid">${cards}</div>`;
-    }
-    function kitText() {
-      const lines = [
-        "Print-cell kits — " + data.asOfLabel,
-        "Landed is published price plus required extra only. Shipping and tax unknown.",
-        ""
-      ];
-      kits.forEach((k) => {
-        lines.push(kitPlain(k), "");
-      });
-      const winner = kits.filter((k) => k.win);
-      if (winner.length) {
-        lines.push("Lowest buyable kit: " + winner.map((k) => k.title + " " + money(k.total)).join("; "));
-      }
-      return lines.join("\r\n");
-    }
-
-    const EQ_CHIPS = ["Mill", "Printer", "Wash / cure", "Scanner"];
-    const CO_CHIPS = ["Resin", "Wash chemistry", "PPE", "Trays"];
-    function chipLabel(cat) {
-      return cat === "Wash / cure" ? "Wash·cure" : cat;
     }
     function firstId(list, cat) {
       const hit = list.find((i) => i.category === cat);
@@ -872,13 +1451,19 @@
       return order.map((cat) => {
         const id = firstId(list, cat);
         if (!id) return "";
-        return `<a class="chip" href="#${esc(id)}">${esc(chipLabel(cat))}</a>`;
+        return `<a class="chip" href="#${esc(id)}">${esc(cat)}</a>`;
       }).join("");
     }
 
-    document.getElementById("kit-strip").innerHTML = renderKits();
-    document.getElementById("eq-list").innerHTML = data.equipment.map((item) => renderItem(item, false)).join("");
-    document.getElementById("co-list").innerHTML = data.consumables.map((item) => renderItem(item, true)).join("");
+    const eqItems = sortByCategory(data.equipment, EQ_ORDER);
+    const coItems = sortByCategory(data.consumables, CO_ORDER);
+
+    function renderAll() {
+      document.getElementById("kit-strip").innerHTML = renderKits();
+      document.getElementById("eq-list").innerHTML = eqItems.map((item) => renderItem(item, false)).join("");
+      document.getElementById("co-list").innerHTML = coItems.map((item) => renderItem(item, true)).join("");
+    }
+    renderAll();
 
     const tabEq = document.getElementById("tab-eq");
     const tabCo = document.getElementById("tab-co");
@@ -886,8 +1471,8 @@
     const panelCo = document.getElementById("panel-co");
     const note = document.getElementById("tab-note");
     const chips = document.getElementById("chips");
-    const NOTE_EQ = "Request quote opens a mail draft — this page does not send email.";
-    const NOTE_CO = "Buy-it-now links only — no RFQ.";
+    const NOTE_EQ = "Draft RFQ opens a mail draft — this page does not send email. Add your quote stays on this computer.";
+    const NOTE_CO = "Buy goes to the supplier page. Sold-out and backorder rows never win Best buyable.";
 
     function select(which) {
       const eq = which === "eq";
@@ -896,13 +1481,14 @@
       panelEq.classList.toggle("hidden", !eq);
       panelCo.classList.toggle("hidden", eq);
       note.textContent = eq ? NOTE_EQ : NOTE_CO;
-      chips.innerHTML = eq ? chipsHtml(data.equipment, EQ_CHIPS) : chipsHtml(data.consumables, CO_CHIPS);
+      chips.innerHTML = eq ? chipsHtml(eqItems, EQ_ORDER) : chipsHtml(coItems, CO_ORDER);
     }
     tabEq.addEventListener("click", () => select("eq"));
     tabCo.addEventListener("click", () => select("co"));
     select("eq");
 
     function itemTab(id) {
+      if (KIT_IDS.indexOf(id) >= 0) return "eq";
       if (data.equipment.some((i) => i.id === id)) return "eq";
       if (data.consumables.some((i) => i.id === id)) return "co";
       return null;
@@ -914,11 +1500,12 @@
       const tab = itemTab(id);
       if (tab) select(tab);
       const el = document.getElementById(id);
-      if (el) {
+      if (!el) return;
+      requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           el.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
         });
-      }
+      });
     }
     window.addEventListener("hashchange", () => applyHash({ smooth: true }));
     window.addEventListener("popstate", () => applyHash({ smooth: false }));
@@ -927,88 +1514,95 @@
     function announce(msg) {
       live.textContent = msg;
     }
-    function copyText(text, btn, ok) {
-      const done = () => {
-        announce(ok);
-        if (btn) {
-          const old = btn.textContent;
-          btn.textContent = ok;
-          setTimeout(() => { btn.textContent = old; }, 1600);
-        }
+    function exportQuotes() {
+      const map = loadQuotes();
+      const quotes = [];
+      Object.keys(map).forEach((skuId) => {
+        const item = findItem(skuId);
+        (map[skuId] || []).forEach((q) => {
+          quotes.push({
+            skuId,
+            skuName: item ? item.name : skuId,
+            name: q.supplier,
+            kind: "quote",
+            price: q.price,
+            currency: "USD",
+            date: q.date || "",
+            note: q.note || "",
+            source: "your quote (this computer only)"
+          });
+        });
+      });
+      const payload = {
+        exportedAt: new Date().toISOString(),
+        catalogAsOf: data.asOf,
+        key: QUOTE_KEY,
+        quotes
       };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
-      } else fallbackCopy(text, done);
-    }
-    function fallbackCopy(text, done) {
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      ta.setAttribute("readonly", "");
-      ta.style.position = "fixed";
-      ta.style.left = "-9999px";
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand("copy"); } catch (e) {}
-      document.body.removeChild(ta);
-      done();
-    }
-    function downloadCsv(filename, text) {
-      const blob = new Blob([text], { type: "text/csv;charset=utf-8" });
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = filename;
+      a.download = "equipment-prices-quotes.json";
       document.body.appendChild(a);
       a.click();
       setTimeout(() => {
         URL.revokeObjectURL(a.href);
         a.remove();
       }, 0);
+      announce("Quotes JSON downloaded. The app did not commit or send it.");
     }
-    function clearPrint() {
-      document.body.classList.remove("print-pack", "print-kit");
-      document.querySelectorAll(".item.is-print").forEach((el) => el.classList.remove("is-print"));
+    function restoreHashAfterRender() {
+      applyHash({ smooth: false });
     }
-    window.addEventListener("afterprint", clearPrint);
-
+    document.addEventListener("submit", (e) => {
+      const form = e.target.closest("[data-quote-form]");
+      if (!form) return;
+      e.preventDefault();
+      const skuId = form.getAttribute("data-quote-form");
+      const supplier = (form.supplier.value || "").trim();
+      const price = Number(form.price.value);
+      const date = form.date.value;
+      const qNote = (form.note.value || "").trim();
+      if (!supplier || !date || !Number.isFinite(price) || price <= 0) {
+        announce("Need a supplier, a date, and a dollar amount greater than zero.");
+        return;
+      }
+      const map = loadQuotes();
+      if (!Array.isArray(map[skuId])) map[skuId] = [];
+      map[skuId].push({
+        id: "q-" + Date.now() + "-" + Math.random().toString(16).slice(2),
+        supplier,
+        price,
+        date,
+        note: qNote
+      });
+      saveQuotes(map);
+      form.reset();
+      form.date.value = new Date().toISOString().slice(0, 10);
+      renderAll();
+      select(document.getElementById("tab-eq").getAttribute("aria-selected") === "true" ? "eq" : "co");
+      restoreHashAfterRender();
+      announce("Quote saved on this computer only. It is not Best buyable.");
+    });
     document.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-act]");
       if (!btn) return;
       const act = btn.getAttribute("data-act");
-      const id = btn.getAttribute("data-id");
-      const item = id ? findItem(id) : null;
-      if (act === "copy" && item) copyText(tableText(item), btn, "Copied");
-      if (act === "csv" && item) {
-        downloadCsv(item.id + "-as-of-" + data.asOf + ".csv", tableCsv(item));
-        announce("CSV downloaded");
+      if (act === "export-quotes") {
+        exportQuotes();
+        return;
       }
-      if (act === "rfq" && item) {
-        const box = document.getElementById("rfq-" + item.id);
-        if (!box) return;
-        const open = box.hasAttribute("hidden");
-        document.querySelectorAll(".rfq-box").forEach((el) => { el.hidden = true; el.classList.add("hidden"); });
-        if (open) {
-          box.hidden = false;
-          box.classList.remove("hidden");
-          box.scrollIntoView({ block: "nearest" });
-        }
-        announce(open ? "RFQ drafts listed. This page does not send email." : "RFQ drafts hidden.");
-      }
-      if (act === "copy-rfq" && item) copyText(rfqChecklistText(item), btn, "Copied");
-      if (act === "print" && item) {
-        clearPrint();
-        document.body.classList.add("print-pack");
-        const el = document.getElementById(item.id);
-        if (el) el.classList.add("is-print");
-        window.print();
-        clearPrint();
-      }
-      if (act === "copy-kit") copyText(kitText(), btn, "Copied");
-      if (act === "print-kit") {
-        clearPrint();
+      if (act === "remove-quote") {
+        const skuId = btn.getAttribute("data-id");
+        const qid = btn.getAttribute("data-qid");
+        const map = loadQuotes();
+        map[skuId] = (map[skuId] || []).filter((q) => q.id !== qid);
+        if (!map[skuId].length) delete map[skuId];
+        saveQuotes(map);
+        renderAll();
         select("eq");
-        document.body.classList.add("print-kit");
-        window.print();
-        clearPrint();
+        restoreHashAfterRender();
+        announce("Quote removed from this computer.");
       }
     });
   </script>

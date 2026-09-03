@@ -1,9 +1,9 @@
-Edit 1 — Equipment Prices
-Dropped: consumable Source buttons (Buy only); quote-card boilerplate paragraph.
-Added: ranked compare tables; bid pack (print / copy / CSV / RFQ drafts); category jump chips.
-Compare: landed = price + required extra; buyable first; Best bid / Tied MAP; sold-out Tatum never wins Asiga.
-Kits: Formlabs split, Formlabs complete, SprintRay complete-system + Die & Model 2; wash/cure optional (no double-count of $20k).
-Landed is not a delivered total — shipping and tax unknown.
-RFQ is one mailto or quote-page link per supplier. App never sends.
+Loop 1 start-over — Equipment Prices UI rewritten; same repo and live URL.
+Dropped: supplier cards; Copy/CSV/Draft RFQs/print toolbars; RFQ pack; Gaps; Tied MAP; Best bid; landed; capital Source button; print-pack/print-kit CSS.
+Added: one ranked table per SKU; Best buyable on lowest in-stock published total; cheaper but sold out never wins; Add your quote + Export JSON (local only).
+Kits first: Formlabs split, Formlabs complete (no wash/cure stacked on $12,006), SprintRay $20,000 request + Die & Model 2 = $20,149 (not buyable). ProWash/ProCure optional only.
+Private quotes: localStorage equipment-prices:quotes; Kind “Your quote”; never Best buyable; app never commits, sends, or uploads.
+Consumable notes normalize stock (Source Graphics out of stock, Voxel Fast Model backorder) so they cannot win Best buyable.
+Compare: published price + that supplier’s required extra only; shipping and tax unknown; quote-only shows —.
 Live: https://in-housesystems.com/equipment-prices/
 As of: 2 Sep 2026

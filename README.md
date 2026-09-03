@@ -4,31 +4,36 @@ https://in-housesystems.com/equipment-prices/
 
 Side-by-side supplier prices for In-House Systems LLC Path A print-cell equipment and consumables.
 
-Same SKU, different suppliers. Capital equipment can open a quote mail draft (Jack sends it). Consumables are buy-it-now only.
+Same SKU, different suppliers. Capital rows can open one quote mail draft (Jack sends it). Consumable rows buy on the supplier page. In-House Systems LLC does not sell these SKUs.
 
-## This ship (Edit 1)
+## This ship (Loop 1 start-over)
 
-Ranked compare table under each capital SKU. Landed is published price plus required extra only; shipping and tax are unknown.
+New first screen: short hero, Capital / Consumables tabs, print-cell kits, then one ranked compare table per SKU. No supplier cards.
 
-Bid pack: print, copy table, CSV (`SKU-as-of-2026-09-02`), and Draft RFQs as one mailto draft or quote-page link per supplier. The app never sends email.
+Dropped: supplier cards; Copy / CSV / Draft RFQs / print toolbars; RFQ pack box; Gaps flags; Tied MAP and Best bid; the word landed; Source as a second capital button; print-pack / print-kit CSS.
 
-Category jump chips hash to the first SKU in that group (`#vhf-e5`). Capital: Mill / Printer / Wash·cure / Scanner. Consumables: Resin / Wash chemistry / PPE / Trays.
+Added: plain-word columns (Supplier, Kind, Published price, Extra required, Total we can compare, Stock, Note, Action). Best buyable is the lowest in-stock published total. Same-price in-stock rows share Best buyable (same price). A cheaper sold-out row is labeled cheaper but sold out and never wins. Add your quote on each capital SKU (this computer only) and Export JSON.
 
-Print-cell kits from existing SKUs: Formlabs split, Formlabs complete, SprintRay complete-system + Die & Model 2. SprintRay ProWash S / ProCure 2 are optional add-ons so the published complete-system figure is not stacked.
+Kits: Formlabs split, Formlabs complete (wash/cure already in the $12,006 package), SprintRay complete-system $20,000 + Die & Model 2 ($20,149). SprintRay is request, so it cannot win buyable. ProWash S / ProCure 2 stay optional add-ons and are not added to that total.
 
-Dropped this ship: consumable Source buttons (Buy only) and the quote-card boilerplate paragraph.
+## Two ways a number gets on this page
+
+### 1. Published price
+
+Edit `data/prices.json`. Keep the inline JSON in `index.html` (`#price-data`) in lockstep with that file. Bump `asOf` / `asOfLabel`. Commit; GitHub Pages ships it. There is no live scrape.
+
+### 2. Private quote
+
+Type the quote in the app on this computer. It is stored under `equipment-prices:quotes` and ranked as Kind “Your quote”. It never wins Best buyable. Export JSON if you later want that row in `prices.json`. The app never commits, never sends, and never uploads.
 
 ## Live
 
 GitHub Pages serves this static folder from the repo root (`base` `/equipment-prices/`).
 
-## Data
-
-Public prices are baked in `data/prices.json` and inlined in `index.html`. Pages cannot scrape live dealer sites (CORS). Refresh the JSON, rebuild `index.html` if you change the generator, and stamp a new "as of" date.
-
 ## Rules
 
 - Do not invent prices.
 - Label every figure list / quote / estimate, with source URL and date.
-- Do not auto-send email.
+- Total we can compare is published price plus that supplier’s required extra only. Shipping and tax are unknown.
+- Do not auto-send email. Mailto drafts only, From `jpatterson@in-housesystems.com`.
 - Do not put personal Gmail or Round Rock on the public page.

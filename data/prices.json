@@ -457,6 +457,7 @@
           "name": "Voxel Dental",
           "kind": "list",
           "price": 79,
+          "availability": "backorder",
           "note": "Backordered when checked.",
           "sourceUrl": "https://voxeldental.com/products/fast-model-resin-form-4-1-l-4",
           "sourceLabel": "Voxel Dental Fast Model"
@@ -481,6 +482,7 @@
           "name": "Source Graphics",
           "kind": "list",
           "price": 249,
+          "availability": "sold_out",
           "note": "Listed out of stock.",
           "sourceUrl": "https://sourcegraphics.com/product/formlabs-surgical-guide-resin-form-4-1l/",
           "sourceLabel": "Source Graphics Surgical Guide Resin"
