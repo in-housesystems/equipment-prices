@@ -6,9 +6,11 @@ Side-by-side supplier prices for In-House Systems LLC Path A print-cell equipmen
 
 Same SKU, different suppliers. Capital rows can open one quote mail draft (Jack sends it). Consumable rows buy on the supplier page. In-House Systems LLC does not sell these SKUs.
 
-## This ship (Loop 1 start-over)
+## This ship (Architecture Edit 1)
 
-New first screen: short hero, Capital / Consumables tabs, print-cell kits, then one ranked compare table per SKU. No supplier cards.
+Single catalog source: the live page fetches `data/prices.json`. There is no inline `#price-data` copy to keep in lockstep. `404.html` matches `index.html`.
+
+Screen (unchanged): short hero, Capital / Consumables tabs, print-cell kits, then one ranked compare table per SKU. No supplier cards.
 
 Dropped: supplier cards; Copy / CSV / Draft RFQs / print toolbars; RFQ pack box; Gaps flags; Tied MAP and Best bid; the word landed; Source as a second capital button; print-pack / print-kit CSS.
 
@@ -20,7 +22,7 @@ Kits: Formlabs split, Formlabs complete (wash/cure already in the $12,006 packag
 
 ### 1. Published price
 
-Edit `data/prices.json`. Keep the inline JSON in `index.html` (`#price-data`) in lockstep with that file. Bump `asOf` / `asOfLabel`. Commit; GitHub Pages ships it. There is no live scrape.
+Edit only `data/prices.json`. Bump `asOf` / `asOfLabel`. Commit; GitHub Pages ships it. The live page fetches that file. There is no live scrape and no inline catalog copy to keep in lockstep.
 
 ### 2. Private quote
 
