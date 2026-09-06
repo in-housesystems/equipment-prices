@@ -98,6 +98,12 @@
       border-radius: 999px; padding: 7px 12px;
     }
     .chip:hover, .chip:focus-visible { border-color: var(--navy); }
+    .skip-link {
+      position: fixed; left: 12px; top: 8px; z-index: 60; transform: translateY(-150%);
+      background: var(--mint); color: var(--navy); padding: 9px 14px; border-radius: 999px;
+      font-weight: 700; text-decoration: none;
+    }
+    .skip-link:focus { transform: translateY(0); }
     .item, .kit-strip {
       background: rgba(255,255,255,0.42);
       border: 1px solid var(--line); border-radius: 18px;
@@ -284,6 +290,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="nav">
     <div class="nav-inner">
       <a class="brand" href="https://in-housesystems.com/">
@@ -293,7 +300,7 @@
       <div class="stamp" id="stamp">Prices as of September 2, 2026</div>
     </div>
   </header>
-  <main class="wrap">
+  <main class="wrap" id="main-content">
     <section class="hero">
       <p class="kicker">In-House Systems LLC · Path A print cell</p>
       <h1>Equipment Prices</h1>

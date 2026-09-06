@@ -2,6 +2,12 @@
 
 Newest first. This is the human list of what went live. GitHub still has the technical commits.
 
+## Sep 5, 2026 — Faster keyboard navigation
+
+- Added a keyboard-visible link that skips the sticky header and moves directly to the price content.
+- Catalog data, ranking rules, private quotes, and the live URL did not change.
+- Local scratch output under `__grok/` is now ignored.
+
 ## Sep 4, 2026 — One catalog file
 
 - The live page loads prices from `data/prices.json` only
